@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Exames_comp implements Serializable {
+public class ExamesComp implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -21,12 +21,12 @@ public class Exames_comp implements Serializable {
 	private String ds_observacao;
 	
 	
-	public Exames_comp() {
+	public ExamesComp() {
 		
 	}
 
 
-	public Exames_comp(Integer cd_exame_comp, Integer cd_receita, String nm_exame, String ds_observacao) {
+	public ExamesComp(Integer cd_exame_comp, Integer cd_receita, String nm_exame, String ds_observacao) {
 		super();
 		this.cd_exame_comp = cd_exame_comp;
 		this.cd_receita = cd_receita;
@@ -89,7 +89,7 @@ public class Exames_comp implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Exames_comp other = (Exames_comp) obj;
+		ExamesComp other = (ExamesComp) obj;
 		return Objects.equals(cd_exame_comp, other.cd_exame_comp);
 	}
 

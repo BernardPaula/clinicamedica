@@ -3,7 +3,6 @@ package com.bernardpaula.clinicamedica.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -11,13 +10,13 @@ import org.springframework.stereotype.Service;
 import com.bernardpaula.clinicamedica.domain.Cargos;
 import com.bernardpaula.clinicamedica.repository.CargosRepository;
 import com.bernardpaula.clinicamedica.services.exceptions.DataIntegrityException;
-import com.bernardpaula.cursomc.domain.Pedido;
+import com.bernardpaula.clinicamedica.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CargosService {
 
 	@Autowired
-	private CargosRepository repo;
+	public CargosRepository repo;
 	
 	
 	public Cargos find(Integer id) {
@@ -34,7 +33,7 @@ public class CargosService {
 	public Cargos update(Cargos obj) {
 		Cargos newObj = find(obj.getCd_cargo());
 		updateData(newObj, obj);
-		return newObj;
+		return repo.save(newObj);
 	}
 	
 	public void updateData(Cargos newObj, Cargos obj) {

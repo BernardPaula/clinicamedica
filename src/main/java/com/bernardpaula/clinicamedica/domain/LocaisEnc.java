@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Locais_enc implements Serializable{
+public class LocaisEnc implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,12 +23,12 @@ public class Locais_enc implements Serializable{
 	private String ds_observacoes;
 	
 	
-	public Locais_enc() {
+	public LocaisEnc() {
 		
 	}
 
 
-	public Locais_enc(Integer cod_local_enc, Integer cd_exame_comp, String nm_clinica, String ds_endereco,
+	public LocaisEnc(Integer cod_local_enc, Integer cd_exame_comp, String nm_clinica, String ds_endereco,
 			Integer nr_telefone, String ds_observacoes) {
 		super();
 		this.cod_local_enc = cod_local_enc;
@@ -114,7 +114,7 @@ public class Locais_enc implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Locais_enc other = (Locais_enc) obj;
+		LocaisEnc other = (LocaisEnc) obj;
 		return Objects.equals(cd_exame_comp, other.cd_exame_comp);
 	}
 	

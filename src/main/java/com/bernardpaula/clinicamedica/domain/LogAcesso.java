@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Log_acesso implements Serializable{
+public class LogAcesso implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,12 +25,12 @@ public class Log_acesso implements Serializable{
 	private Date dt_acesso;   // esta como DATETIME
 	
 	
-	public Log_acesso() {
+	public LogAcesso() {
 		
 	}
 
 
-	public Log_acesso(Integer cd_acesso, String nm_usuario, Date dt_acesso) {
+	public LogAcesso(Integer cd_acesso, String nm_usuario, Date dt_acesso) {
 		super();
 		this.cd_acesso = cd_acesso;
 		this.nm_usuario = nm_usuario;
@@ -82,7 +82,7 @@ public class Log_acesso implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Log_acesso other = (Log_acesso) obj;
+		LogAcesso other = (LogAcesso) obj;
 		return Objects.equals(cd_acesso, other.cd_acesso);
 	}
 	
