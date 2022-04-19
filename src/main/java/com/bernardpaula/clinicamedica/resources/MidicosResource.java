@@ -12,50 +12,48 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.bernardpaula.clinicamedica.domain.ExamesComp;
-import com.bernardpaula.clinicamedica.services.ExamesCompService;
+import com.bernardpaula.clinicamedica.domain.Medicos;
+import com.bernardpaula.clinicamedica.services.MedicosService;
 
 @RestController
-@RequestMapping(value = "/exames")
-public class ExamesCompResource {
+@RequestMapping(value = "/medicos")
+public class MidicosResource {
 
 	@Autowired
-	public ExamesCompService service;
+	public MedicosService service;
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<ExamesComp> find(@PathVariable Integer id){
-		ExamesComp obj = service.find(id);
+	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Medicos> find(@PathVariable Integer id){
+		Medicos obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ExamesComp obj){
-		obj.setCd_exame_comp(null);
+	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Medicos obj){
+		obj.setCd_medico(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_exame_comp()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_medico()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
-		obj.setCd_exame_comp(id);
+	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Medicos obj, @PathVariable Integer id){
+		obj.setCd_medico(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method= RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
-	public ResponseEntity<List<ExamesComp>> findAll(){
-		List<ExamesComp> list = service.findAll();
+	public ResponseEntity<List<Medicos>> findAll(){
+		List<Medicos> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
-	
 	
 }

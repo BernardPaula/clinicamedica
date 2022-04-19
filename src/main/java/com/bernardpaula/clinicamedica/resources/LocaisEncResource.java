@@ -12,50 +12,47 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.bernardpaula.clinicamedica.domain.ExamesComp;
-import com.bernardpaula.clinicamedica.services.ExamesCompService;
+import com.bernardpaula.clinicamedica.domain.LocaisEnc;
+import com.bernardpaula.clinicamedica.services.LocaisEncService;
 
 @RestController
-@RequestMapping(value = "/exames")
-public class ExamesCompResource {
+@RequestMapping(value = "/locaisenc")
+public class LocaisEncResource {
 
 	@Autowired
-	public ExamesCompService service;
+	public LocaisEncService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<ExamesComp> find(@PathVariable Integer id){
-		ExamesComp obj = service.find(id);
+	public ResponseEntity<LocaisEnc> find(@PathVariable Integer id){
+		LocaisEnc obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ExamesComp obj){
-		obj.setCd_exame_comp(null);
+	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody LocaisEnc obj){
+		obj.setCod_local_enc(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_exame_comp()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCod_local_enc()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
-		obj.setCd_exame_comp(id);
+	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody LocaisEnc obj, @PathVariable Integer id){
+		obj.setCod_local_enc(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method= RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method =RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
-	public ResponseEntity<List<ExamesComp>> findAll(){
-		List<ExamesComp> list = service.findAll();
+	public ResponseEntity<List<LocaisEnc>> findAll(){
+		List<LocaisEnc> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
-	
-	
 }

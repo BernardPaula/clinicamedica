@@ -12,50 +12,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.bernardpaula.clinicamedica.domain.ExamesComp;
-import com.bernardpaula.clinicamedica.services.ExamesCompService;
+import com.bernardpaula.clinicamedica.domain.LogAcesso;
+import com.bernardpaula.clinicamedica.services.LogAcessoService;
 
 @RestController
-@RequestMapping(value = "/exames")
-public class ExamesCompResource {
+@RequestMapping(value = "/logacessos")
+public class LogAcessoResource {
 
 	@Autowired
-	public ExamesCompService service;
+	public LogAcessoService service;
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<ExamesComp> find(@PathVariable Integer id){
-		ExamesComp obj = service.find(id);
+	public ResponseEntity<LogAcesso> find(@PathVariable Integer id){
+		LogAcesso obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ExamesComp obj){
-		obj.setCd_exame_comp(null);
+	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
+	public ResponseEntity<Void> insert(@RequestBody LogAcesso obj){
+		obj.setCd_acesso(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_exame_comp()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_acesso()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
-		obj.setCd_exame_comp(id);
+	public ResponseEntity<Void> update(@RequestBody LogAcesso obj, @PathVariable Integer id){
+		obj.setCd_acesso(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/{id}", method= RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete (Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/listar", method=RequestMethod.GET)
-	public ResponseEntity<List<ExamesComp>> findAll(){
-		List<ExamesComp> list = service.findAll();
+	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	public ResponseEntity<List<LogAcesso>> findAll(){
+		List<LogAcesso> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
 	
 	
 }
