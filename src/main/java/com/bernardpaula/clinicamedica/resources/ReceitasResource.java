@@ -37,7 +37,7 @@ public class ReceitasResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Receitas obj, @PathVariable Integer id){
 		obj.setCd_receitas(id);
 		obj = service.update(obj);

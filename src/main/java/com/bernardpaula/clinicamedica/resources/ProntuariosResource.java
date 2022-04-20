@@ -37,7 +37,7 @@ public class ProntuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/{id", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Prontuarios obj, @PathVariable Integer id){
 		obj.setCd_prontuario(id);
 		obj = service.update(obj);

@@ -43,7 +43,7 @@ public class ClinicasResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
