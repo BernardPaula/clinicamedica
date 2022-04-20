@@ -23,15 +23,15 @@ public class Prontuarios implements Serializable{
 	private Integer cd_medicamento;
 	private String ds_posologia;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_iniciomed;      // ver- DATETIME - é o que está no projeto
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_finalmed;
 	
 	private Integer cd_exame;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_exame;
 	
 	private String ds_resultado;

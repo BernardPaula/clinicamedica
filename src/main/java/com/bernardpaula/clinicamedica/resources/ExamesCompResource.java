@@ -16,7 +16,7 @@ import com.bernardpaula.clinicamedica.domain.ExamesComp;
 import com.bernardpaula.clinicamedica.services.ExamesCompService;
 
 @RestController
-@RequestMapping(value = "/exames")
+@RequestMapping(value = "/examescomps")
 public class ExamesCompResource {
 
 	@Autowired

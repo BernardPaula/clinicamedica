@@ -23,10 +23,10 @@ public class Laudos implements Serializable{
 	private Integer cd_medico;
 	private String ds_laudo;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_laudo;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")    // - ver - esta como TIME
+	@JsonFormat(pattern = "yyyy/MM/dd")    // - ver - esta como TIME
 	private Date hr_laudo;
 	
 	

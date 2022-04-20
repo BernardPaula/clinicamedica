@@ -21,7 +21,7 @@ public class Convenios implements Serializable{
 	
 	private String nm_convenio;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_inicio;
 	
 	private String ds_regioes;

@@ -34,7 +34,7 @@ public class Funcionarios implements Serializable{
 	private String nm_usuario;
 	private String ds_senha;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_ecesso;     // esta como DATETIME
 	
 	private Integer nr_acessos;

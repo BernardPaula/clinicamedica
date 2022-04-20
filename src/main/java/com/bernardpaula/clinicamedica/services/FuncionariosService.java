@@ -36,7 +36,6 @@ public class FuncionariosService {
 	
 	private void updateData(Funcionarios newObj, Funcionarios obj) {
 		newObj.setCd_clinica(obj.getCd_clinica());
-		newObj.setCd_funcionario(obj.getCd_funcionario());
 		newObj.setDs_bairro(obj.getDs_bairro());
 		newObj.setDs_complemento(obj.getDs_complemento());
 		newObj.setDs_endereco(obj.getDs_endereco());
@@ -52,6 +51,7 @@ public class FuncionariosService {
 		newObj.setNr_telcel(obj.getNr_telcel());
 		newObj.setNr_telres(obj.getNr_telres());
 		newObj.setRm_funcionario(obj.getRm_funcionario());
+		newObj.setCd_cargo(obj.getCd_cargo());
 	}
 	
 	

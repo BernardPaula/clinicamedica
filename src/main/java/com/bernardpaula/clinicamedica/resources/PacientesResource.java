@@ -16,7 +16,7 @@ import com.bernardpaula.clinicamedica.domain.Pacientes;
 import com.bernardpaula.clinicamedica.services.PacientesService;
 
 @RestController
-@RequestMapping(value = "/Pacientes")
+@RequestMapping(value = "/pacientes")
 public class PacientesResource {
 
 	@Autowired

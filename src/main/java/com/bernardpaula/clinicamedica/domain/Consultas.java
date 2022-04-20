@@ -19,10 +19,10 @@ public class Consultas implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_consulta;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dt_consulta;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date nr_horairo;   // - ver - está como TIME
 	
 	private Integer cd_paciente;

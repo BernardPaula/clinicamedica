@@ -21,7 +21,7 @@ public class LogAcesso implements Serializable{
 
 	private String nm_usuario;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_acesso;   // esta como DATETIME
 	
 	

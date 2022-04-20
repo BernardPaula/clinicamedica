@@ -22,7 +22,7 @@ public class Receitas implements Serializable{
 	private Integer cd_paciente;
 	private Integer cd_medico;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_receita;    // - esta como DATETIME
 	
 	private Integer cd_medicamento;
