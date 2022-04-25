@@ -41,7 +41,7 @@ public class CargosResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Cargos obj, @PathVariable Integer id){
+	public ResponseEntity<Void> update(@Valid @RequestBody Cargos obj, @PathVariable Integer id){
 		obj.setCd_cargo(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

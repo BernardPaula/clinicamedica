@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -22,6 +24,8 @@ public class Funcionarios implements Serializable{
 	private String rm_funcionario;
 	private Integer cd_clinica;
 	private Integer nr_rg;
+	
+	@CPF
 	private Integer nr_cpf;
 	private Integer cd_cargo;
 	private String ds_endereco;

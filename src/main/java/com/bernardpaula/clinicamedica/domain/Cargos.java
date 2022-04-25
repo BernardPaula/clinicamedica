@@ -20,9 +20,11 @@ public class Cargos implements Serializable{
 	private Integer cd_cargo;
 	
 	@NotEmpty(message = "preenchimento obrigatório")
-	@Length(min=5, max=80, message = "O tamanho deve ser entre 5 e 80 caracteres")
+	@Length(min=5, max=25, message = "O tamanho deve ser entre 5 e 25 caracteres")
 	private String nm_cargo;
 	
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min=5, max=50, message = "O tamanho deve ser entre 5 e 50 caracteres")
 	private String ds_cargo;
 	
 	

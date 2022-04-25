@@ -39,7 +39,7 @@ public class ClinicasResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Clinicas obj, @PathVariable Integer id){
+	public ResponseEntity<Void> update(@Valid @RequestBody Clinicas obj, @PathVariable Integer id){
 		obj.setCd_clinica(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

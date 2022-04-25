@@ -3,6 +3,8 @@ package com.bernardpaula.clinicamedica.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +31,7 @@ public class FuncionariosResource {
 	}
 	
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Funcionarios obj){
+	public ResponseEntity<Void> insert(@Valid @RequestBody Funcionarios obj){
 		obj.setCd_cargo(null);
 		obj = service.insert(obj);
 		
@@ -38,7 +40,7 @@ public class FuncionariosResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Funcionarios obj, @PathVariable Integer id){
+	public ResponseEntity<Void> update(@Valid @RequestBody Funcionarios obj, @PathVariable Integer id){
 		obj.setCd_cargo(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
