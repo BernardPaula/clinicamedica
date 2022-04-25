@@ -3,6 +3,8 @@ package com.bernardpaula.clinicamedica.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +32,7 @@ public class CargosResource {
 	}
 	
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
-	public ResponseEntity<Void> insert(@RequestBody Cargos obj){
+	public ResponseEntity<Void> insert(@Valid @RequestBody Cargos obj){
 		obj.setCd_cargo(null);
 		obj = service.insert(obj);
 		

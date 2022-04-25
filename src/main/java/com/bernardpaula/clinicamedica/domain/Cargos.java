@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Cargos implements Serializable{
@@ -16,7 +19,10 @@ public class Cargos implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_cargo;
 	
+	@NotEmpty(message = "preenchimento obrigatório")
+	@Length(min=5, max=80, message = "O tamanho deve ser entre 5 e 80 caracteres")
 	private String nm_cargo;
+	
 	private String ds_cargo;
 	
 	
