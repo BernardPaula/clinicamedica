@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,21 +23,35 @@ public class Funcionarios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_funcionario;
 	
-	private String rm_funcionario;
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
+	private String nm_funcionario;
 	private Integer cd_clinica;
 	private Integer nr_rg;
 	
 	@CPF
 	private Integer nr_cpf;
 	private Integer cd_cargo;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_endereco;
 	private Integer nr_numero;
 	private Integer ds_complemento;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=15, message= "O tamanho deve ser entre 5 e 15 caracteres")
 	private String ds_bairro;
 	private Integer nr_cep;
 	private Integer nr_telres;
 	private Integer nr_telcel;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
 	private String nm_usuario;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
 	private String ds_senha;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
@@ -50,13 +66,13 @@ public class Funcionarios implements Serializable{
 	}
 
 
-	public Funcionarios(Integer cd_funcionario, String rm_funcionario, Integer cd_clinica, Integer nr_rg,
+	public Funcionarios(Integer cd_funcionario, String nm_funcionario, Integer cd_clinica, Integer nr_rg,
 			Integer nr_cpf, Integer cd_cargo, String ds_endereco, Integer nr_numero, Integer ds_complemento,
 			String ds_bairro, Integer nr_cep, Integer nr_telres, Integer nr_telcel, String nm_usuario, String ds_senha,
 			Date dt_ecesso, Integer nr_acessos, char fl_admin) {
 		super();
 		this.cd_funcionario = cd_funcionario;
-		this.rm_funcionario = rm_funcionario;
+		this.nm_funcionario = nm_funcionario;
 		this.cd_clinica = cd_clinica;
 		this.nr_rg = nr_rg;
 		this.nr_cpf = nr_cpf;
@@ -86,13 +102,13 @@ public class Funcionarios implements Serializable{
 	}
 
 
-	public String getRm_funcionario() {
-		return rm_funcionario;
+	public String getNm_funcionario() {
+		return nm_funcionario;
 	}
 
 
-	public void setRm_funcionario(String rm_funcionario) {
-		this.rm_funcionario = rm_funcionario;
+	public void setNm_funcionario(String nm_funcionario) {
+		this.nm_funcionario = nm_funcionario;
 	}
 
 

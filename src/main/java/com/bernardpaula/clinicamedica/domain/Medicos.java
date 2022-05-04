@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Medicos implements Serializable{
@@ -17,13 +20,28 @@ public class Medicos implements Serializable{
 	private Integer cd_medico;
 	
 	private Integer cd_laudo;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
 	private String nm_medico;
 	private Integer nr_rg;
 	private Integer nr_cpf;
 	private Integer nr_crm;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
 	private String ds_area;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
 	private String ds_especialidades;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
 	private String nm_usuario;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=10, message= "O tamano deve ser entre 5 e 10 caracteres")
 	private String ds_senha;
 	private char fl_admin;
 	private Integer nr_pessoas;

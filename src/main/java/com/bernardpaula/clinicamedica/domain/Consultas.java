@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -28,6 +31,9 @@ public class Consultas implements Serializable {
 	private Integer cd_paciente;
 	private Integer cd_convenio;
 	private Integer cd_medico;
+	
+	@NotEmpty(message = "preenchimento obrigatório")
+	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
 	private String ds_tipo;
 
 	

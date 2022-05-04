@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,11 +22,15 @@ public class Convenios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_convenio;
 	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
 	private String nm_convenio;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_inicio;
 	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message = "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_regioes;
 	
 	

@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -19,6 +22,8 @@ public class LogAcesso implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_acesso;
 
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message= "O tamanho deve ter entre 5 e 30 caracteres")
 	private String nm_usuario;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")

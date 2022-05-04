@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class LocaisEnc implements Serializable{
@@ -17,9 +20,18 @@ public class LocaisEnc implements Serializable{
 	private Integer cod_local_enc;
 	
 	private Integer cd_exame_comp;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
 	private String nm_clinica;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_endereco;
 	private Integer nr_telefone;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
 	private String ds_observacoes;
 	
 	

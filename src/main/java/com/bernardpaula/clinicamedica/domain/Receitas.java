@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -26,9 +29,15 @@ public class Receitas implements Serializable{
 	private Date dt_receita;    // - esta como DATETIME
 	
 	private Integer cd_medicamento;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_posologia;
 	private Integer cd_exame;
 	private Integer cd_clinica;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
 	private String ds_observacoes;
 	
 	

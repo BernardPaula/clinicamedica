@@ -50,7 +50,7 @@ public class FuncionariosService {
 		newObj.setNr_rg(obj.getNr_rg());
 		newObj.setNr_telcel(obj.getNr_telcel());
 		newObj.setNr_telres(obj.getNr_telres());
-		newObj.setRm_funcionario(obj.getRm_funcionario());
+		newObj.setNm_funcionario(obj.getNm_funcionario());
 		newObj.setCd_cargo(obj.getCd_cargo());
 	}
 	

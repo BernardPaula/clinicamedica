@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,6 +24,9 @@ public class Prontuarios implements Serializable{
 	
 	private Integer cd_paciente;
 	private Integer cd_medicamento;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
 	private String ds_posologia;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
@@ -34,7 +40,12 @@ public class Prontuarios implements Serializable{
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_exame;
 	
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min=5, max=40, message=  "O tamanho deve ser entre 5 e 40 caracteres")
 	private String ds_resultado;
+	
+	@NotEmpty(message= "Preechimento obrigatório")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
 	private String ds_observacao;
 	
 	

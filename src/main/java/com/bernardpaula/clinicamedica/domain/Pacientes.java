@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Pacientes implements Serializable{
@@ -19,17 +22,35 @@ public class Pacientes implements Serializable{
 	private Integer cd_convenio;
 	private Integer cd_laudo;
 	private Integer cd_prontuario;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
 	private String nm_paciente;
 	private Integer nr_cpf;
 	private Integer nr_rg;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=50, message= "O tamano deve ser entre 5 e 50 caracteres")
 	private String nm_pai;
+	
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
 	private String nm_mae;
 	private Integer nr_carteira;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
 	private String ds_endereco;
 	private Integer nr_telefone_res;
 	private Integer nr_telefone_cel;
 	private Integer nr_telefone_com;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
 	private String de_email;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
 	private String ds_senhaweb;
 	private Integer nr_acessos;
 	

@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class ExamesComp implements Serializable {
@@ -17,7 +20,13 @@ public class ExamesComp implements Serializable {
 	private Integer cd_exame_comp;
 	
 	private Integer cd_receita;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
 	private String nm_exame;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=5, max=50, message = "O tamanho deve ser entre 5 e 50 caracteres")
 	private String ds_observacao;
 	
 	

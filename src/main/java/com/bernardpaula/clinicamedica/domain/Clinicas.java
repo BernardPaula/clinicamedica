@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CNPJ;
+
+import com.bernardpaula.clinicamedica.services.validations.ClinicasInsert;
 
 @Entity
 public class Clinicas implements Serializable{
@@ -25,7 +25,7 @@ public class Clinicas implements Serializable{
 	@Length(min=5, max = 40, message = "O tamanho deve ser entre 5 e 40 caracteres")
 	private String nm_clinica;
 	
-	@CNPJ
+	
 	private Integer nr_cnpj;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
@@ -37,24 +37,25 @@ public class Clinicas implements Serializable{
 	@Length(min=5, max=30, message = "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_endereco;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	
 	private Integer nr_numero;
 	
 	private String ds_complemento;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
 	private String ds_bairro;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	
 	private Integer nr_cep;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
 	private String ds_cidade;
 	
 	private char ds_uf;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@Email(message = "Email inválido")
+	
 	private String ds_email;
 	
 	private Integer nr_telefone;
