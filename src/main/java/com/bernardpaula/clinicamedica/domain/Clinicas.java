@@ -11,8 +11,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.bernardpaula.clinicamedica.services.validations.ClinicasInsert;
-
 @Entity
 public class Clinicas implements Serializable{
 	private static final long serialVersionUID = 1L;
