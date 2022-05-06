@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.Prontuarios;
 import com.bernardpaula.clinicamedica.services.ProntuariosService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/prontuarios")
 public class ProntuariosResource {
@@ -22,12 +24,14 @@ public class ProntuariosResource {
 	@Autowired
 	public ProntuariosService service;
 	
+	@ApiOperation(value = "Retorna Prontuários por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Prontuarios> find (@PathVariable Integer id){
 		Prontuarios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere Prontuários")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Prontuarios obj){
 		obj.setCd_prontuario(null);
@@ -37,6 +41,7 @@ public class ProntuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza Prontuários")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Prontuarios obj, @PathVariable Integer id){
 		obj.setCd_prontuario(id);
@@ -44,12 +49,14 @@ public class ProntuariosResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove Prontuários")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Lista todos os Prontuários")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Prontuarios>> findAll(){
 		List<Prontuarios> list = service.findAll();

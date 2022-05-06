@@ -58,10 +58,10 @@ public class SwaggerConfig {
 		return new ApiInfo("API Clinica Medica",
 				"Esta API é utilizada em um teste de uma clínica medica", 
 				"Versão 1.0",
-				"https://www.udemy.com/terms",
-				new Contact("Bernard Paula", "udemy.com/user/nelio-alves", "bernardstudioart@gmail.com"),
-				"Permitido uso para estudantes", 
-				"https://www.udemy.com/terms", 
+				"",
+				new Contact("Bernard Paula", "", "bernardstudioart@gmail.com"),
+				"", 
+				"", 
 				Collections.emptyList() // Vendor
 																										// Extensions
 		);

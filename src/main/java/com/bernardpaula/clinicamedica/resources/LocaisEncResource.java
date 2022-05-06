@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.LocaisEnc;
 import com.bernardpaula.clinicamedica.services.LocaisEncService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/locaisenc")
 public class LocaisEncResource {
@@ -22,12 +24,14 @@ public class LocaisEncResource {
 	@Autowired
 	public LocaisEncService service;
 	
+	@ApiOperation(value = "Busca LocaisEnc por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<LocaisEnc> find(@PathVariable Integer id){
 		LocaisEnc obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere LocaisEnc")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody LocaisEnc obj){
 		obj.setCod_local_enc(null);
@@ -37,6 +41,7 @@ public class LocaisEncResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza LocaisEnc")
 	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody LocaisEnc obj, @PathVariable Integer id){
 		obj.setCod_local_enc(id);
@@ -44,12 +49,14 @@ public class LocaisEncResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove LocaisEnc")
 	@RequestMapping(value = "/{id}", method =RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Lista todos os LocaisEnc")
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public ResponseEntity<List<LocaisEnc>> findAll(){
 		List<LocaisEnc> list = service.findAll();

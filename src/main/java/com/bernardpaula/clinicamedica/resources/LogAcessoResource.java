@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.LogAcesso;
 import com.bernardpaula.clinicamedica.services.LogAcessoService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/logacessos")
 public class LogAcessoResource {
@@ -22,13 +24,14 @@ public class LogAcessoResource {
 	@Autowired
 	public LogAcessoService service;
 	
-	
+	@ApiOperation(value = "Busca LogAcesso por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<LogAcesso> find(@PathVariable Integer id){
 		LogAcesso obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere LogAcesso")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
 	public ResponseEntity<Void> insert(@RequestBody LogAcesso obj){
 		obj.setCd_acesso(null);
@@ -38,6 +41,7 @@ public class LogAcessoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza LogAcesso")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody LogAcesso obj, @PathVariable Integer id){
 		obj.setCd_acesso(id);
@@ -45,12 +49,14 @@ public class LogAcessoResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove LogAcesso")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Listar todos os LogAcessos")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<LogAcesso>> findAll(){
 		List<LogAcesso> list = service.findAll();

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.ExamesComp;
 import com.bernardpaula.clinicamedica.services.ExamesCompService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/examescomps")
 public class ExamesCompResource {
@@ -22,12 +24,14 @@ public class ExamesCompResource {
 	@Autowired
 	public ExamesCompService service;
 	
+	@ApiOperation(value = "Busca ExamesComp por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ExamesComp> find(@PathVariable Integer id){
 		ExamesComp obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere ExamesComp")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody ExamesComp obj){
 		obj.setCd_exame_comp(null);
@@ -37,6 +41,7 @@ public class ExamesCompResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza ExamesComp")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
 		obj.setCd_exame_comp(id);
@@ -44,18 +49,17 @@ public class ExamesCompResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove ExamesComp")
 	@RequestMapping(value = "/{id}", method= RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Retorna todos os ExamesComp")
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public ResponseEntity<List<ExamesComp>> findAll(){
 		List<ExamesComp> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
-	
-	
 }

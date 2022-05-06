@@ -17,6 +17,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.Funcionarios;
 import com.bernardpaula.clinicamedica.services.FuncionariosService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/funcionarios")
 public class FuncionariosResource {
@@ -24,12 +26,14 @@ public class FuncionariosResource {
 	@Autowired
 	public FuncionariosService service;
 	
+	@ApiOperation(value = "Busca Funcionarios por id")
 	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Funcionarios> find(@PathVariable Integer id){
 		Funcionarios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere Funcionarios")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Funcionarios obj){
 		obj.setCd_cargo(null);
@@ -39,6 +43,7 @@ public class FuncionariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza Funcionarios")
 	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody Funcionarios obj, @PathVariable Integer id){
 		obj.setCd_cargo(id);
@@ -46,12 +51,14 @@ public class FuncionariosResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove Funcionarios")
 	@RequestMapping(value = "/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Retorna todas of Funcionarios")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Funcionarios>> findAll(){
 		List<Funcionarios> list = service.findAll();

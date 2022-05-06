@@ -15,6 +15,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bernardpaula.clinicamedica.domain.Consultas;
 import com.bernardpaula.clinicamedica.services.ConsultasService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/consultas")
 public class ConsultasResource {
@@ -22,12 +24,14 @@ public class ConsultasResource {
 	@Autowired
 	public ConsultasService service;
 	
+	@ApiOperation(value = "Busca por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Consultas> find(@PathVariable Integer id){
 		Consultas obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@ApiOperation(value = "Insere Consultas")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Consultas obj){
 		obj.setCd_consulta(null);
@@ -37,6 +41,7 @@ public class ConsultasResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza Consultas")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Consultas obj, @PathVariable Integer id){
 		obj.setCd_consulta(id);
@@ -44,12 +49,14 @@ public class ConsultasResource {
 		return  ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Remove Consultas")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Retorna todas as Consultas")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Consultas>> findAll(){
 		List<Consultas> list = service.findAll();
