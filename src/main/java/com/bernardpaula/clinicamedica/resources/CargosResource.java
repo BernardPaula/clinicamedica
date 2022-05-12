@@ -37,7 +37,7 @@ public class CargosResource {
 	
 	@ApiOperation(value= "Insere Cargos")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
-	public ResponseEntity<Void> insert(@Valid @RequestBody Cargos obj){
+	public ResponseEntity<Cargos> insert(@Valid @RequestBody Cargos obj){
 		obj.setCd_cargo(null);
 		obj = service.insert(obj);
 		
