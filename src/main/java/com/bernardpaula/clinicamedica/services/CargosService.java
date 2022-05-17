@@ -30,6 +30,8 @@ public class CargosService {
 		return repo.save(obj);
 	}
 	
+	
+	
 	public Cargos update(Cargos obj) {
 		Cargos newObj = find(obj.getCd_cargo());
 		updateData(newObj, obj);

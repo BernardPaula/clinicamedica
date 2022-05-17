@@ -1,0 +1,16 @@
+
+Olhar a informacao no site abaixo:
+
+git remote set-url origin git@github.com:username/repo.git
+				   " EH UM EXEMPLO                        "
+				   	
+executar o seguinte comando no git bash do projeto: 
+	
+	git remote set-url origin MINHA_URL_SSH
+	
+	
+MINHA_URL_SSH -> pegar a URL correta de SSH no meu projeto do github
+
+
+//------------------------------
+git remote set-url origin git@github.com:BernardPaula/clinicamedica.git
