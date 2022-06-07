@@ -26,7 +26,7 @@ public class Consultas implements Serializable {
 	private Date dt_consulta;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date nr_horairo;   // - ver - está como TIME
+	private Date nr_horairo;   
 	
 	private Integer cd_paciente;
 	private Integer cd_convenio;

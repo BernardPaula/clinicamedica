@@ -71,6 +71,7 @@ public class CargosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Cargos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
