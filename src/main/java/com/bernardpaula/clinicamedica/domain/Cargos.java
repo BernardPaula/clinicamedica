@@ -3,15 +3,18 @@ package com.bernardpaula.clinicamedica.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name = "cargos")
 public class Cargos implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -21,17 +24,18 @@ public class Cargos implements Serializable{
 	
 	@NotEmpty(message = "preenchimento obrigatório")
 	@Length(min=5, max=25, message = "O tamanho deve ser entre 5 e 25 caracteres")
+	@Column(unique = true, nullable = false)
 	private String nm_cargo;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=5, max=50, message = "O tamanho deve ser entre 5 e 50 caracteres")
+	@Column(unique=true, nullable = false)
 	private String ds_cargo;
 	
 	
 	public Cargos() {
 		
 	}
-
 
 	public Cargos(Integer cd_cargo, String nm_cargo, String ds_cargo) {
 		super();

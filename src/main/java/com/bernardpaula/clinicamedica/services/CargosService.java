@@ -64,4 +64,8 @@ public class CargosService {
 		PageRequest pageRequest = PageRequest.of(nome, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	
+	public List<Cargos> filtrar(String pesquisa){
+		return repo.filtrarPesquisa(pesquisa);
+	}
 }

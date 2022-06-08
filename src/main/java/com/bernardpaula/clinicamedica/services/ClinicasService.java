@@ -69,4 +69,7 @@ public class ClinicasService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<Clinicas> filtrar(String pesquisa){
+		return repo.filtrarPesquisa(pesquisa);
+	}
 }

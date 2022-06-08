@@ -76,4 +76,10 @@ public class ClinicasResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public ResponseEntity<List<Clinicas>> filtrar(@PathVariable String pesquisa){
+		List<Clinicas> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+ 	}
+	
 }

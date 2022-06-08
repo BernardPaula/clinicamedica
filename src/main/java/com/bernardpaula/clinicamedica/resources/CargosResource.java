@@ -56,7 +56,7 @@ public class CargosResource {
 	
 	@ApiOperation(value= "Remove Cargos")
 	@ApiResponses(value = {
-			@ApiResponse(code = 400, message = "NÃo é possível excluir uma categoria que possui produtos"),
+			@ApiResponse(code = 400, message = "Nï¿½o ï¿½ possï¿½vel excluir uma categoria que possui produtos"),
 			@ApiResponse(code = 404, message = "CÃ³digo inexistente") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
@@ -80,4 +80,11 @@ public class CargosResource {
 		Page<Cargos> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@RequestMapping(value = "/filtrar/{pesquisa}", method = RequestMethod.GET)
+	public ResponseEntity<List<Cargos>> filtrar(@PathVariable String pesquisa){
+		List<Cargos> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+	}
+	
 }
