@@ -56,7 +56,7 @@ public class CargosResource {
 	
 	@ApiOperation(value= "Remove Cargos")
 	@ApiResponses(value = {
-			@ApiResponse(code = 400, message = "NÃ£o Ã© possÃ­vel excluir uma categoria que possui produtos"),
+			@ApiResponse(code = 400, message = "NÃo é possível excluir uma categoria que possui produtos"),
 			@ApiResponse(code = 404, message = "CÃ³digo inexistente") })
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){

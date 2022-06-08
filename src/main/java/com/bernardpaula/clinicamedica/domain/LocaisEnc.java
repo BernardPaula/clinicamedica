@@ -21,16 +21,16 @@ public class LocaisEnc implements Serializable{
 	
 	private Integer cd_exame_comp;
 	
-	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
 	private String nm_clinica;
 	
-	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
 	private String ds_endereco;
 	private Integer nr_telefone;
 	
-	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=5, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
 	private String ds_observacoes;
 	
