@@ -26,11 +26,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	
 	private final ResponseMessage m201 = customMessage1();
-	private final ResponseMessage m204put = simpleMessage(204, "Atualiza√ß√£o ok");
-	private final ResponseMessage m204del = simpleMessage(204, "Dele√ß√£o ok");
-	private final ResponseMessage m403 = simpleMessage(403, "N√£o autorizado");
-	private final ResponseMessage m404 = simpleMessage(404, "N√£o encontrado");
-	private final ResponseMessage m422 = simpleMessage(422, "Erro de valida√ß√£o");
+	private final ResponseMessage m204put = simpleMessage(204, "AtualizaÁ„o ok");
+	private final ResponseMessage m204del = simpleMessage(204, "DeleÁ„o ok");
+	private final ResponseMessage m403 = simpleMessage(403, "N„o autorizado");
+	private final ResponseMessage m404 = simpleMessage(404, "N„o encontrado");
+	private final ResponseMessage m422 = simpleMessage(422, "Erro de validaÁ„o");
 	private final ResponseMessage m500 = simpleMessage(500, "Erro inesperado");
 	
 	
@@ -56,8 +56,8 @@ public class SwaggerConfig {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfo("API Clinica Medica",
-				"Esta API √© utilizada em um teste de uma cl√≠nica medica", 
-				"Vers√£o 1.0",
+				"Esta API È utilizada em um teste de uma clÌnica medica", 
+				"Vers„o 1.0",
 				"",
 				new Contact("Bernard Paula", "", "bernardstudioart@gmail.com"),
 				"", 

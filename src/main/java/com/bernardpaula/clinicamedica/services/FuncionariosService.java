@@ -72,4 +72,9 @@ public class FuncionariosService {
 	PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 	return repo.findAll(pageRequest);
 	}
+	
+	public List<Funcionarios> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
+	
 }

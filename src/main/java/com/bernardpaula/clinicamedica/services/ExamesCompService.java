@@ -59,4 +59,8 @@ public class ExamesCompService {
 		PageRequest pageRequest = PageRequest.of(nome, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	
+	public List<ExamesComp> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
 }

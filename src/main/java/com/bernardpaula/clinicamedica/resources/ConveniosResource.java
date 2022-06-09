@@ -33,7 +33,7 @@ public class ConveniosResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Inserte ConvÃªnios")
+	@ApiOperation(value = "Insere Convênios")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Convenios obj){
 		obj = service.insert(obj);
@@ -42,7 +42,7 @@ public class ConveniosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@ApiOperation(value = "Atualiza ConvÃªnios")
+	@ApiOperation(value = "Atualiza Convênios")
 	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Convenios obj, @PathVariable Integer id){
 		obj.setCd_convenio(id);
@@ -50,20 +50,21 @@ public class ConveniosResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Remove ConvÃªnios")
+	@ApiOperation(value = "Remove Convênios")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Retorna todos os ConvÃªnios")
+	@ApiOperation(value = "Retorna todos os Convênios")
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public ResponseEntity<List<Convenios>> findAll(){
 		List<Convenios> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value= "Retorna uma página de Convênios")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Convenios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
@@ -71,6 +72,13 @@ public class ConveniosResource {
 			@RequestParam(value = "orderBy", defaultValue = "nm_convenio")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Convenios> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@ApiOperation(value = "Retorna uma lista de Convênios filtrada pela pesquisa")
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Convenios>> filtrar(@PathVariable String pesquisa){
+		List<Convenios> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);
 	}
 }

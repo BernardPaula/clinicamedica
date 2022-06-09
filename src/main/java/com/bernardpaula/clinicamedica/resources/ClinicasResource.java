@@ -59,7 +59,7 @@ public class ClinicasResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Retorna todas as ClÃ­nicas")
+	@ApiOperation(value = "Retorna todas as Clínicas")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Clinicas>> findAll(){
 		List<Clinicas> list = service.findAll();

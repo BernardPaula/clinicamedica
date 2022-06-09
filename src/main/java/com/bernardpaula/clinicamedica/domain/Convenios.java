@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -15,6 +17,7 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name= "convenios")
 public class Convenios implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -22,15 +25,16 @@ public class Convenios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_convenio;
 	
-	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
 	private String nm_convenio;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_inicio;
 	
-	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=5, max=30, message = "O tamanho deve ser entre 5 e 30 caracteres")
+	@Column(unique=true)
 	private String ds_regioes;
 	
 	

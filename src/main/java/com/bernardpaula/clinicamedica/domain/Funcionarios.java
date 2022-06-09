@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -16,6 +18,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name= "funcionarios")
 public class Funcionarios implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -23,41 +26,61 @@ public class Funcionarios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_funcionario;
 	
-	@NotEmpty(message= "Preenchimento obrigat贸rio")
-	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat髍io")
+	@Length(min=5, max=40, message= "O tamanho deve ser entre 1 e 100 caracteres")
 	private String nm_funcionario;
+	
+	@Column(unique=true)
 	private Integer cd_clinica;
+	
+	@Column(unique=true)
 	private Integer nr_rg;
 	
 	@CPF
+	@Column(unique=true)
 	private Integer nr_cpf;
+	
+	@Column(unique=true)
 	private Integer cd_cargo;
 	
-	@NotEmpty(message= "Preenchimento obrigat贸rio")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat髍io")
+	@Length(min=5, max=30, message= "O tamanho deve ser entre 1 e 100 caracteres")
 	private String ds_endereco;
+	
+	@Column(unique=true)
 	private Integer nr_numero;
+	
+	@Column(unique=true)
 	private Integer ds_complemento;
 	
-	@NotEmpty(message= "Preenchimento obrigat贸rio")
-	@Length(min=5, max=15, message= "O tamanho deve ser entre 5 e 15 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat髍io")
+	@Length(min=5, max=15, message= "O tamanho deve ser entre 1 e 100 caracteres")
 	private String ds_bairro;
+	
+	@Column(unique=true)
 	private Integer nr_cep;
+	
+	@Column(unique=true)
 	private Integer nr_telres;
+	
+	@Column(unique=true)
 	private Integer nr_telcel;
 	
-	@NotEmpty(message= "Preenchimento obrigat贸rio")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat髍io")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 1 e 100 caracteres")
 	private String nm_usuario;
 	
-	@NotEmpty(message= "Preenchimento obrigat贸rio")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat髍io")
+	@Length(min=5, max=10, message= "O tamanho deve ser entre 1 e 30 caracteres")
 	private String ds_senha;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_ecesso;     // esta como DATETIME
 	
+	@Column(unique=true)
 	private Integer nr_acessos;
+	
+	@Column(unique=true)
 	private char fl_admin;
 	
 	

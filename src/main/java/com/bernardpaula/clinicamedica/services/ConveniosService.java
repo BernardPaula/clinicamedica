@@ -58,4 +58,8 @@ public class ConveniosService {
 		PageRequest pageRequest = PageRequest.of(nome, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	
+	public List<Convenios> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
 }

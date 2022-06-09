@@ -26,14 +26,14 @@ public class ProntuariosResource {
 	@Autowired
 	public ProntuariosService service;
 	
-	@ApiOperation(value = "Retorna ProntuÃ¡rios por id")
+	@ApiOperation(value = "Retorna Prontuários por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Prontuarios> find (@PathVariable Integer id){
 		Prontuarios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Insere ProntuÃ¡rios")
+	@ApiOperation(value = "Insere Prontuários")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Prontuarios obj){
 		obj.setCd_prontuario(null);
@@ -43,7 +43,7 @@ public class ProntuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@ApiOperation(value = "Atualiza ProntuÃ¡rios")
+	@ApiOperation(value = "Atualiza Prontuários")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Prontuarios obj, @PathVariable Integer id){
 		obj.setCd_prontuario(id);
@@ -51,14 +51,14 @@ public class ProntuariosResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Remove ProntuÃ¡rios")
+	@ApiOperation(value = "Remove Prontuários")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Lista todos os ProntuÃ¡rios")
+	@ApiOperation(value = "Lista todos os Prontuários")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Prontuarios>> findAll(){
 		List<Prontuarios> list = service.findAll();

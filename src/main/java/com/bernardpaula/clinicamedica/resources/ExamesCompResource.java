@@ -65,6 +65,7 @@ public class ExamesCompResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value="Retorna uma página de ExamesComp")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<ExamesComp>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
@@ -72,6 +73,13 @@ public class ExamesCompResource {
 			@RequestParam(value = "orderBy", defaultValue = "nm_exame")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<ExamesComp> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@ApiOperation(value= "Retorna uma lista de ExamesComp filtrados pela pesquisa")
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<ExamesComp>> filtrar(@PathVariable String pesquisa){
+		List<ExamesComp> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);
 	}
 }

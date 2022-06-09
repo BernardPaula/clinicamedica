@@ -65,6 +65,7 @@ public class ConsultasResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de consultas")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Consultas>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
@@ -72,6 +73,12 @@ public class ConsultasResource {
 			@RequestParam(value = "orderBy", defaultValue = "dt_consulta")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Consultas> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Consultas>> filtrar(@PathVariable String pesquisa){
+		List<Consultas> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);
 	}
 	

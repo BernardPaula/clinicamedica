@@ -59,4 +59,8 @@ public class ConsultasService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<Consultas> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
+	
 }

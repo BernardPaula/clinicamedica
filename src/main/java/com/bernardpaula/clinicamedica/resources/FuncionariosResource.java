@@ -67,6 +67,7 @@ public class FuncionariosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de Funcionários")
 	@RequestMapping(value = "/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<Funcionarios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -76,4 +77,12 @@ public class FuncionariosResource {
 		Page<Funcionarios> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@ApiOperation(value= "Retorna uma lista de Funcionários filtrados pela pesquisa")
+	@RequestMapping(value = "/filtrar{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Funcionarios>> filtrar(@PathVariable String pesquisa){
+		List<Funcionarios> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+	}
+	
 }
