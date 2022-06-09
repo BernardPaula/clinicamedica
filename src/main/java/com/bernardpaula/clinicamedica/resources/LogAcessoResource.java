@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiOperation;
 public class LogAcessoResource {
 
 	@Autowired
-	public LogAcessoService service;
+	private LogAcessoService service;
 	
 	@ApiOperation(value = "Busca LogAcesso por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<LogAcesso> find(@PathVariable Integer id){
 		LogAcesso obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class LogAcessoResource {
 	}
 	
 	@ApiOperation(value = "Atualiza LogAcesso")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody LogAcesso obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<LogAcesso> update(@RequestBody LogAcesso obj, @PathVariable Integer id){
 		obj.setCd_acesso(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove LogAcesso")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,6 +65,8 @@ public class LogAcessoResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de LogAcessos")
+	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<LogAcesso>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
@@ -74,4 +76,10 @@ public class LogAcessoResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma lista de LogAcessos filtrados pela pesquisa")
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<LogAcesso>> filtrar(@PathVariable String pesquisa){
+		List<LogAcesso> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+	}
 }

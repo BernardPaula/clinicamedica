@@ -26,8 +26,8 @@ public class Funcionarios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_funcionario;
 	
-	@NotEmpty(message= "Preenchimento obrigat髍io")
-	@Length(min=5, max=40, message= "O tamanho deve ser entre 1 e 100 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat贸rio")
+	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
 	private String nm_funcionario;
 	
 	@Column(unique=true)
@@ -43,8 +43,8 @@ public class Funcionarios implements Serializable{
 	@Column(unique=true)
 	private Integer cd_cargo;
 	
-	@NotEmpty(message= "Preenchimento obrigat髍io")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 1 e 100 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat贸rio")
+	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
 	private String ds_endereco;
 	
 	@Column(unique=true)
@@ -53,8 +53,8 @@ public class Funcionarios implements Serializable{
 	@Column(unique=true)
 	private Integer ds_complemento;
 	
-	@NotEmpty(message= "Preenchimento obrigat髍io")
-	@Length(min=5, max=15, message= "O tamanho deve ser entre 1 e 100 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat贸rio")
+	@Length(min=1, max=15, message= "O tamanho deve ser entre 1 e 15 caracteres")
 	private String ds_bairro;
 	
 	@Column(unique=true)
@@ -66,12 +66,12 @@ public class Funcionarios implements Serializable{
 	@Column(unique=true)
 	private Integer nr_telcel;
 	
-	@NotEmpty(message= "Preenchimento obrigat髍io")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 1 e 100 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat贸rio")
+	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
 	private String nm_usuario;
 	
-	@NotEmpty(message= "Preenchimento obrigat髍io")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 1 e 30 caracteres")
+	@NotEmpty(message= "Preenchimento obrigat贸rio")
+	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
 	private String ds_senha;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")

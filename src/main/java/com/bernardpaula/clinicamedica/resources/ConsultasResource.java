@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiOperation;
 public class ConsultasResource {
 
 	@Autowired
-	public ConsultasService service;
+	private ConsultasService service;
 	
 	@ApiOperation(value = "Busca por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Consultas> find(@PathVariable Integer id){
 		Consultas obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class ConsultasResource {
 	}
 	
 	@ApiOperation(value = "Atualiza Consultas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Consultas obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Consultas> update(@RequestBody Consultas obj, @PathVariable Integer id){
 		obj.setCd_consulta(id);
 		obj = service.update(obj);
-		return  ResponseEntity.noContent().build();
+		return  ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove Consultas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,7 +65,7 @@ public class ConsultasResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value = "Retorna uma p·gina de consultas")
+	@ApiOperation(value = "Retorna uma p√°gina de consultas")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Consultas>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 

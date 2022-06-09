@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiOperation;
 public class ExamesCompResource {
 
 	@Autowired
-	public ExamesCompService service;
+	private ExamesCompService service;
 	
 	@ApiOperation(value = "Busca ExamesComp por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ExamesComp> find(@PathVariable Integer id){
 		ExamesComp obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class ExamesCompResource {
 	}
 	
 	@ApiOperation(value = "Atualiza ExamesComp")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<ExamesComp> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
 		obj.setCd_exame_comp(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove ExamesComp")
-	@RequestMapping(value = "/{id}", method= RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method= RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,7 +65,7 @@ public class ExamesCompResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value="Retorna uma p·gina de ExamesComp")
+	@ApiOperation(value="Retorna uma p√°gina de ExamesComp")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<ExamesComp>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 

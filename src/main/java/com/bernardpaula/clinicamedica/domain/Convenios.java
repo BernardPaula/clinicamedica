@@ -25,15 +25,16 @@ public class Convenios implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_convenio;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatï¿½rio")
+	@Length(min=1, max=20, message= "O tamanho deve ser entre 1 e 20 caracteres")
+	@Column(unique=true)
 	private String nm_convenio;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_inicio;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message = "O tamanho deve ser entre 5 e 30 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatï¿½rio")
+	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
 	@Column(unique=true)
 	private String ds_regioes;
 	

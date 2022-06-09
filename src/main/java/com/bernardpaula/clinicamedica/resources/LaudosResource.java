@@ -27,7 +27,7 @@ public class LaudosResource {
 	private LaudosService service;
 	
 	@ApiOperation(value = "Busca Laudos por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Laudos> find(@PathVariable Integer id){
 		Laudos obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class LaudosResource {
 	}
 	
 	@ApiOperation(value = "Atualiza Laudos")
-	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Laudos obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Laudos> update(@RequestBody Laudos obj, @PathVariable Integer id){
 		obj.setCd_laudo(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove Laudos")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,6 +65,7 @@ public class LaudosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de Laudos filtrados")
 	@RequestMapping(value = "/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<Laudos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -74,4 +75,11 @@ public class LaudosResource {
 		Page<Laudos> list = service.findPage(page, linesPerPage, OrderBy, direction);
 		return ResponseEntity.ok().body(list);
 		}
+	
+	@ApiOperation(value = "Retorna uma lista de Laudos filtrados pela pesquisa")
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Laudos>> filtrar(@PathVariable String pesquisa){
+		List<Laudos> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+	}
 }

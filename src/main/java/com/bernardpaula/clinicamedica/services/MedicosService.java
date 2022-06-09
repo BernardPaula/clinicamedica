@@ -65,4 +65,8 @@ public class MedicosService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<Medicos> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
+	
 }

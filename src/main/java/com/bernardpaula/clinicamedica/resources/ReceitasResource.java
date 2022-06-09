@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiOperation;
 public class ReceitasResource {
 
 	@Autowired
-	public ReceitasService service;
+	private ReceitasService service;
 	
 	@ApiOperation(value = "Retorna Receitas por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Receitas> find (@PathVariable Integer id){
 		Receitas obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class ReceitasResource {
 	}
 	
 	@ApiOperation(value = "Atualiza Receitas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Receitas obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Receitas> update(@RequestBody Receitas obj, @PathVariable Integer id){
 		obj.setCd_receitas(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove Receitas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,6 +65,7 @@ public class ReceitasResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de Receitas")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Receitas>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -72,6 +73,13 @@ public class ReceitasResource {
 			@RequestParam(value = "orderBy", defaultValue = "ds_posologia")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "0")String direction){
 		Page<Receitas> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@ApiOperation(value = "Retorna uma lista de Receitas filtradas pela pesquisa")
+	@RequestMapping(value = "/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Receitas>> filtrar(@PathVariable String pesquisa){
+		List<Receitas> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);
 	}
 	

@@ -24,16 +24,16 @@ import io.swagger.annotations.ApiOperation;
 public class ProntuariosResource {
 
 	@Autowired
-	public ProntuariosService service;
+	private ProntuariosService service;
 	
-	@ApiOperation(value = "Retorna Prontu·rios por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ApiOperation(value = "Retorna Prontuarios por id")
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Prontuarios> find (@PathVariable Integer id){
 		Prontuarios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Insere Prontu·rios")
+	@ApiOperation(value = "Insere Prontuarios")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Prontuarios obj){
 		obj.setCd_prontuario(null);
@@ -43,28 +43,29 @@ public class ProntuariosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@ApiOperation(value = "Atualiza Prontu·rios")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Prontuarios obj, @PathVariable Integer id){
+	@ApiOperation(value = "Atualiza Prontuarios")
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Prontuarios> update(@RequestBody Prontuarios obj, @PathVariable Integer id){
 		obj.setCd_prontuario(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Remove Prontu·rios")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Remove Prontuarios")
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Lista todos os Prontu·rios")
+	@ApiOperation(value = "Lista todos os Prontuarios")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Prontuarios>> findAll(){
 		List<Prontuarios> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma p√°gina de Prontuarios")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Prontuarios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -72,6 +73,13 @@ public class ProntuariosResource {
 			@RequestParam(value = "orderBy", defaultValue = "ds_posologia")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "0")String direction){
 		Page<Prontuarios> list = service.findPage(page, linesPerPage, orderBy, direction);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@ApiOperation(value = "Retorna uma lista de Prontuarios filtrados pela pesquisa")
+	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<Prontuarios>> filtrar(@PathVariable String pesquisa){
+		List<Prontuarios> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);
 	}
 }

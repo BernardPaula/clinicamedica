@@ -71,4 +71,7 @@ public class PacientesService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<Pacientes> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
 }

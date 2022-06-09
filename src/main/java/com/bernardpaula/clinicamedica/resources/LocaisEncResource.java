@@ -20,14 +20,14 @@ import com.bernardpaula.clinicamedica.services.LocaisEncService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/locaisenc")
+@RequestMapping(value = "/locaisencs")
 public class LocaisEncResource {
 
 	@Autowired
 	private LocaisEncService service;
 	
 	@ApiOperation(value = "Busca LocaisEnc por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<LocaisEnc> find(@PathVariable Integer id){
 		LocaisEnc obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -44,15 +44,15 @@ public class LocaisEncResource {
 	}
 	
 	@ApiOperation(value = "Atualiza LocaisEnc")
-	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody LocaisEnc obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<LocaisEnc> update(@RequestBody LocaisEnc obj, @PathVariable Integer id){
 		obj.setCod_local_enc(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove LocaisEnc")
-	@RequestMapping(value = "/{id}", method =RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method =RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -65,6 +65,7 @@ public class LocaisEncResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value="Retorna uma página de LocaisEncs")
 	@RequestMapping(value = "/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<LocaisEnc>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -74,4 +75,11 @@ public class LocaisEncResource {
 		Page<LocaisEnc> list = service.findPage(page, linesPerPage, OrderBy, direction);
 		return ResponseEntity.ok().body(list);
 		}
+	
+	@ApiOperation(value = "Retorna uma lista de LocaisEncs filtrados pela pesquisa")
+	@RequestMapping(value = "/filtrar/{pesquisa}", method=RequestMethod.GET)
+	public ResponseEntity<List<LocaisEnc>> filtrar(@PathVariable String pesquisa){
+		List<LocaisEnc> list = service.filtrar(pesquisa);
+		return ResponseEntity.ok().body(list);
+	}
 }

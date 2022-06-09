@@ -57,4 +57,8 @@ public class LaudosService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	
+	public List<Laudos> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
 }

@@ -3,15 +3,18 @@ package com.bernardpaula.clinicamedica.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name="pacientes")
 public class Pacientes implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -19,39 +22,64 @@ public class Pacientes implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cd_paciente;
 	
+	@Column(unique=true)
 	private Integer cd_convenio;
+	
+	@Column(unique=true)
 	private Integer cd_laudo;
+	
+	@Column(unique=true)
 	private Integer cd_prontuario;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String nm_paciente;
+	
+	@Column(unique=true)
 	private Integer nr_cpf;
+	
+	@Column(unique=true)
 	private Integer nr_rg;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=50, message= "O tamano deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max=50, message= "O tamano deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String nm_pai;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String nm_mae;
+	
+	@Column(unique=true)
 	private Integer nr_carteira;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String ds_endereco;
+	
+	@Column(unique=true)
 	private Integer nr_telefone_res;
+	
+	@Column(unique=true)
 	private Integer nr_telefone_cel;
+	
+	@Column(unique=true)
 	private Integer nr_telefone_com;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=50, message= "O tamanho deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String de_email;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
+	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
+	@Column(unique=true)
 	private String ds_senhaweb;
+	
+	@Column(unique=true)
 	private Integer nr_acessos;
 	
 	

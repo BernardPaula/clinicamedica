@@ -3,15 +3,18 @@ package com.bernardpaula.clinicamedica.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name= "locais_enc")
 public class LocaisEnc implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -19,26 +22,30 @@ public class LocaisEnc implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cod_local_enc;
 	
+	@Column(unique=true)
 	private Integer cd_exame_comp;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
+	@Column(unique=true)
 	private String nm_clinica;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatï¿½rio")
+	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
+	@Column(unique=true)
 	private String ds_endereco;
+	
+	@Column(unique=true)
 	private Integer nr_telefone;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatÃ³rio")
+	@Length(min=1, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
+	@Column(unique=true)
 	private String ds_observacoes;
 	
 	
-	public LocaisEnc() {
-		
+	public LocaisEnc() {		
 	}
-
 
 	public LocaisEnc(Integer cod_local_enc, Integer cd_exame_comp, String nm_clinica, String ds_endereco,
 			Integer nr_telefone, String ds_observacoes) {

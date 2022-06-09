@@ -3,15 +3,18 @@ package com.bernardpaula.clinicamedica.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name= "medicamentos")
 public class Medicamentos implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,27 +23,33 @@ public class Medicamentos implements Serializable {
 	private Integer cd_medicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message="O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=30, message="O tamanho deve ser entre 1 e 30 caracteres")
+	@Column(unique=true)
 	private String nm_medicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
+	@Column(unique=true)
 	private String ds_substancia;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String ds_posologia;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String ds_laboratorio;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String ds_contraind;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String ds_generico;
 	
 	

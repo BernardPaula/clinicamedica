@@ -3,15 +3,18 @@ package com.bernardpaula.clinicamedica.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Table(name="medicos")
 public class Medicos implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -19,31 +22,46 @@ public class Medicos implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer cd_medico;
 	
+	@Column(unique=true)
 	private Integer cd_laudo;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
+	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
 	private String nm_medico;
+	
+	@Column(unique=true)
 	private Integer nr_rg;
+	
+	@Column(unique=true)
 	private Integer nr_cpf;
+	
+	@Column(unique=true)
 	private Integer nr_crm;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=20, message= "O tamanho deve ser entre 5 e 20 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String ds_area;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=40, message= "O tamanho deve ser entre 5 e 40 caracteres")
+	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
+	@Column(unique=true)
 	private String ds_especialidades;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=10, message= "O tamanho deve ser entre 5 e 10 caracteres")
+	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
+	@Column(unique=true)
 	private String nm_usuario;
 	
+	@Column(unique=true)
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=10, message= "O tamano deve ser entre 5 e 10 caracteres")
+	@Length(min=1, max=10, message= "O tamano deve ser entre 1 e 10 caracteres")
 	private String ds_senha;
+	
+	@Column(unique=true)
 	private char fl_admin;
+	
+	@Column(unique=true)
 	private Integer nr_pessoas;
 	
 	

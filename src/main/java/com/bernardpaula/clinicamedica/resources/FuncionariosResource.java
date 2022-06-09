@@ -26,10 +26,10 @@ import io.swagger.annotations.ApiOperation;
 public class FuncionariosResource {
 
 	@Autowired
-	public FuncionariosService service;
+	private FuncionariosService service;
 	
 	@ApiOperation(value = "Busca Funcionarios por id")
-	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Funcionarios> find(@PathVariable Integer id){
 		Funcionarios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -46,15 +46,15 @@ public class FuncionariosResource {
 	}
 	
 	@ApiOperation(value = "Atualiza Funcionarios")
-	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody Funcionarios obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Funcionarios> update(@Valid @RequestBody Funcionarios obj, @PathVariable Integer id){
 		obj.setCd_cargo(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Remove Funcionarios")
-	@RequestMapping(value = "/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -67,7 +67,7 @@ public class FuncionariosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value = "Retorna uma p·gina de Funcion·rios")
+	@ApiOperation(value = "Retorna uma p√°gina de Funcionarios")
 	@RequestMapping(value = "/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<Funcionarios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
@@ -78,7 +78,7 @@ public class FuncionariosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value= "Retorna uma lista de Funcion·rios filtrados pela pesquisa")
+	@ApiOperation(value= "Retorna uma lista de Funcionarios filtrados pela pesquisa")
 	@RequestMapping(value = "/filtrar{pesquisa}", method=RequestMethod.GET)
 	public ResponseEntity<List<Funcionarios>> filtrar(@PathVariable String pesquisa){
 		List<Funcionarios> list = service.filtrar(pesquisa);

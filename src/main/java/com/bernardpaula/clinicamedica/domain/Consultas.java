@@ -31,12 +31,17 @@ public class Consultas implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date nr_horairo;   
 	
+	@Column(unique=true)
 	private Integer cd_paciente;
+	
+	@Column(unique=true)
 	private Integer cd_convenio;
+	
+	@Column(unique=true)
 	private Integer cd_medico;
 	
-	@NotEmpty(message = "preenchimento obrigatório")
-	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
+	@NotEmpty(message = "preenchimento obrigatï¿½rio")
+	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
 	@Column(unique=true)
 	private String ds_tipo;
 

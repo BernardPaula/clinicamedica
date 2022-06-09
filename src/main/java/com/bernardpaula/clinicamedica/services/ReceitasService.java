@@ -60,4 +60,8 @@ public class ReceitasService {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	
+	public List<Receitas> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
 }

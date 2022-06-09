@@ -58,4 +58,10 @@ public class LocaisEncService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<LocaisEnc> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
+	
+	
+	
 }

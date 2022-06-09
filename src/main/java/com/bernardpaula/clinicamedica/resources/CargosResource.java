@@ -26,10 +26,10 @@ import io.swagger.annotations.ApiResponses;
 public class CargosResource {
 
 	@Autowired
-	public CargosService service;
+	private CargosService service;
 	
 	@ApiOperation(value= "Busca por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cargos> find(@PathVariable Integer id){
 		Cargos obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
@@ -47,18 +47,18 @@ public class CargosResource {
 	}
 	
 	@ApiOperation(value = "Atualiza Cargos")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody Cargos obj, @PathVariable Integer id){
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Cargos> update(@Valid @RequestBody Cargos obj, @PathVariable Integer id){
 		obj.setCd_cargo(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value= "Remove Cargos")
 	@ApiResponses(value = {
-			@ApiResponse(code = 400, message = "N�o � poss�vel excluir uma categoria que possui produtos"),
+			@ApiResponse(code = 400, message = "Não é possível excluir uma categoria que possui produtos"),
 			@ApiResponse(code = 404, message = "Código inexistente") })
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete (@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
@@ -71,6 +71,7 @@ public class CargosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma página de Cargos")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Cargos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
@@ -81,6 +82,7 @@ public class CargosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	@ApiOperation(value = "Retorna uma lista de Cargos filtrados pela pesquisa")
 	@RequestMapping(value = "/filtrar/{pesquisa}", method = RequestMethod.GET)
 	public ResponseEntity<List<Cargos>> filtrar(@PathVariable String pesquisa){
 		List<Cargos> list = service.filtrar(pesquisa);

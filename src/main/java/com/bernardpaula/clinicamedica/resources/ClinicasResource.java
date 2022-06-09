@@ -26,16 +26,16 @@ import io.swagger.annotations.ApiOperation;
 public class ClinicasResource {
 
 	@Autowired
-	public ClinicasService service;
+	private ClinicasService service;
 	
 	@ApiOperation(value= "Busca por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Clinicas> find(@PathVariable Integer id){
 		Clinicas obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Insere Clínicas")
+	@ApiOperation(value = "Insere Clinicas")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Clinicas obj){
 		obj = service.insert(obj);
@@ -44,22 +44,22 @@ public class ClinicasResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@ApiOperation(value = "Atualiza Clínicas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@Valid @RequestBody Clinicas obj, @PathVariable Integer id){
+	@ApiOperation(value = "Atualiza Clinicas")
+	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Clinicas> update(@Valid @RequestBody Clinicas obj, @PathVariable Integer id){
 		obj.setCd_clinica(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Remove Clínicas")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Remove Clinicas")
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Retorna todas as Cl�nicas")
+	@ApiOperation(value = "Retorna todas as Clinicas")
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public ResponseEntity<List<Clinicas>> findAll(){
 		List<Clinicas> list = service.findAll();
@@ -76,7 +76,7 @@ public class ClinicasResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	@RequestMapping(value = "/filtrar/{pesquisa}", method = RequestMethod.GET)
 	public ResponseEntity<List<Clinicas>> filtrar(@PathVariable String pesquisa){
 		List<Clinicas> list = service.filtrar(pesquisa);
 		return ResponseEntity.ok().body(list);

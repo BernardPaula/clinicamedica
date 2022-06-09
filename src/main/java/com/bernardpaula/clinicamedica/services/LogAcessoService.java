@@ -64,4 +64,8 @@ public class LogAcessoService {
 		return repo.findAll(pageRequest);
 	}
 	
+	public List<LogAcesso> filtrar(String pesquisa){
+		return repo.filtrar(pesquisa);
+	}
+	
 }

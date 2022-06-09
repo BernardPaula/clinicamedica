@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -23,44 +24,55 @@ public class Clinicas implements Serializable{
 	private Integer cd_clinica;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max = 40, message = "O tamanho deve ser entre 5 e 40 caracteres")
+	@Length(min=1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres")
+	@Column(unique=true)
 	private String nm_clinica;
 	
-	@NotEmpty(message = "Preenchimento obrigatório")
+	@Column(unique=true)
 	private Integer nr_cnpj;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max = 50, message = "O tamanho deve ser entre 5 e 50 caracteres")
+	@Length(min=1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(unique=true)
 	private String ds_especialidades;
 	
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max=30, message = "O tamanho deve ser entre 5 e 30 caracteres")
+	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
 	private String ds_endereco;
 	
-	@Column(unique=true, nullable=false)
+	@Column(unique=true)
 	private Integer nr_numero;
 	
 	@NotEmpty(message = "Preenchimento obrigatóri")
+	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
+	@Column(unique=true)
 	private String ds_complemento;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
+	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
+	@Column(unique=true)
 	private String ds_bairro;
 	
-	
+	@Column(unique=true)
 	private Integer nr_cep;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@Length(min=5, max=20, message = "O tamanho deve ser entre 5 e 20 caracteres")
+	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
 	private String ds_cidade;
 	
+	@Column(unique=true)
 	private char ds_uf;
 	
-	
+	@Email
+	@Column(unique=true)
+	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
 	private String ds_email;
 	
+	@Column(unique=true)
 	private Integer nr_telefone;
+	
+	@Column(unique=true)
 	private Integer nr_fax;
 	
 	

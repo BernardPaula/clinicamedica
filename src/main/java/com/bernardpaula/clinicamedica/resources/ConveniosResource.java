@@ -24,16 +24,16 @@ import io.swagger.annotations.ApiOperation;
 public class ConveniosResource {
 
 	@Autowired
-	public ConveniosService service;
+	private ConveniosService service;
 	
 	@ApiOperation(value = "Busca por id")
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/pesquisar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Convenios> find(@PathVariable Integer id){
 		Convenios obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Insere Convênios")
+	@ApiOperation(value = "Insere Convenios")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Convenios obj){
 		obj = service.insert(obj);
@@ -42,29 +42,29 @@ public class ConveniosResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@ApiOperation(value = "Atualiza Convênios")
-	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Convenios obj, @PathVariable Integer id){
+	@ApiOperation(value = "Atualiza Convenios")
+	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Convenios> update(@RequestBody Convenios obj, @PathVariable Integer id){
 		obj.setCd_convenio(id);
 		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
-	@ApiOperation(value = "Remove Convênios")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Remove Convenios")
+	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@ApiOperation(value = "Retorna todos os Convênios")
+	@ApiOperation(value = "Retorna todos os Convenios")
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public ResponseEntity<List<Convenios>> findAll(){
 		List<Convenios> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value= "Retorna uma página de Convênios")
+	@ApiOperation(value= "Retorna uma pÃ¡gina de Convenios")
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Convenios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
@@ -75,7 +75,7 @@ public class ConveniosResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@ApiOperation(value = "Retorna uma lista de Convênios filtrada pela pesquisa")
+	@ApiOperation(value = "Retorna uma lista de Convenios filtrada pela pesquisa")
 	@RequestMapping(value="/filtrar/{pesquisa}", method=RequestMethod.GET)
 	public ResponseEntity<List<Convenios>> filtrar(@PathVariable String pesquisa){
 		List<Convenios> list = service.filtrar(pesquisa);

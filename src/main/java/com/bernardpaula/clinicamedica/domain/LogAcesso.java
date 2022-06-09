@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -15,6 +17,7 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name= "log_acesso")
 public class LogAcesso implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +26,8 @@ public class LogAcesso implements Serializable{
 	private Integer cd_acesso;
 
 	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ter entre 5 e 30 caracteres")
+	@Length(min=1, max=80, message= "O tamanho deve ter entre 1 e 80 caracteres")
+	@Column(unique=true)
 	private String nm_usuario;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")

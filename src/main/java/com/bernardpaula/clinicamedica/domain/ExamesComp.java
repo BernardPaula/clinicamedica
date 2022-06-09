@@ -25,12 +25,12 @@ public class ExamesComp implements Serializable {
 	@Column(unique=true)
 	private Integer cd_receita;
 	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=5, max=30, message= "O tamanho deve ser entre 5 e 30 caracteres")
+	@NotEmpty(message= "Preenchimento obrigatï¿½rio")
+	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
 	@Column(unique=true)
 	private String nm_exame;
 	
-	@NotEmpty(message= "Preenchimento obrigatóri")
+	@NotEmpty(message= "Preenchimento obrigatï¿½ri")
 	@Length(min=1, max=300, message = "O tamanho deve ser entre 1 e 300 caracteres")
 	@Column(unique=true)
 	private String ds_observacao;
