@@ -20,64 +20,67 @@ public class Cargos implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_cargo;
+	private Integer cdCargo;
 	
 	@NotEmpty(message = "preenchimento obrigatório")
 	@Length(min=1, max=25, message = "O tamanho deve ser entre 1 e 25 caracteres")
 	@Column(name = "nm_cargo", unique = true)
-	private String nm_cargo;
+	private String nmCargo;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=50, message = "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String ds_cargo;
+	@Column(name="ds_cargo", unique=true)
+	private String dsCargo;
 	
 	
 	public Cargos() {
 		
 	}
 
-	public Cargos(Integer cd_cargo, String nm_cargo, String ds_cargo) {
+
+	public Cargos(Integer cdCargo,
+			@NotEmpty(message = "preenchimento obrigatório") @Length(min = 1, max = 25, message = "O tamanho deve ser entre 1 e 25 caracteres") String nmCargo,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String dsCargo) {
 		super();
-		this.cd_cargo = cd_cargo;
-		this.nm_cargo = nm_cargo;
-		this.ds_cargo = ds_cargo;
+		this.cdCargo = cdCargo;
+		this.nmCargo = nmCargo;
+		this.dsCargo = dsCargo;
 	}
 
 
-	public Integer getCd_cargo() {
-		return cd_cargo;
+	public Integer getCdCargo() {
+		return cdCargo;
 	}
 
 
-	public void setCd_cargo(Integer cd_cargo) {
-		this.cd_cargo = cd_cargo;
+	public void setCdCargo(Integer cdCargo) {
+		this.cdCargo = cdCargo;
 	}
 
 
-	public String getNm_cargo() {
-		return nm_cargo;
+	public String getNmCargo() {
+		return nmCargo;
 	}
 
 
-	public void setNm_cargo(String nm_cargo) {
-		this.nm_cargo = nm_cargo;
+	public void setNmCargo(String nmCargo) {
+		this.nmCargo = nmCargo;
 	}
 
 
-	public String getDs_cargo() {
-		return ds_cargo;
+	public String getDsCargo() {
+		return dsCargo;
 	}
 
 
-	public void setDs_cargo(String ds_cargo) {
-		this.ds_cargo = ds_cargo;
+	public void setDsCargo(String dsCargo) {
+		this.dsCargo = dsCargo;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_cargo);
+		return Objects.hash(cdCargo);
 	}
 
 
@@ -90,10 +93,10 @@ public class Cargos implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cargos other = (Cargos) obj;
-		return Objects.equals(cd_cargo, other.cd_cargo);
+		return Objects.equals(cdCargo, other.cdCargo);
 	}
-	
-	
+
+
 	
 	
 }

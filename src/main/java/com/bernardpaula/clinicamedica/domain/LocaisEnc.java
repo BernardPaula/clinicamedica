@@ -20,108 +20,112 @@ public class LocaisEnc implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cod_local_enc;
+	private Integer codLocalEnc;
 	
-	@Column(unique=true)
-	private Integer cd_exame_comp;
+	@Column(name="cd_exame_comp", unique=true)
+	private Integer cdExameComp;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
-	@Column(unique=true)
-	private String nm_clinica;
+	@Column(name="nm_clinica", unique=true)
+	private String nmClinica;
 	
 	@NotEmpty(message= "Preenchimento obrigat�rio")
 	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String ds_endereco;
+	@Column(name="ds_endereco", unique=true)
+	private String dsEndereco;
 	
-	@Column(unique=true)
-	private Integer nr_telefone;
+	@Column(name="nr_telefone", unique=true)
+	private Integer nrTelefone;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=100, message= "O tamanho deve ser entre 5 e 100 caracteres")
-	@Column(unique=true)
-	private String ds_observacoes;
+	@Column(name="ds_observacoes", unique=true)
+	private String dsObservacoes;
 	
 	
 	public LocaisEnc() {		
 	}
 
-	public LocaisEnc(Integer cod_local_enc, Integer cd_exame_comp, String nm_clinica, String ds_endereco,
-			Integer nr_telefone, String ds_observacoes) {
+
+	public LocaisEnc(Integer codLocalEnc, Integer cdExameComp,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String nmClinica,
+			@NotEmpty(message = "Preenchimento obrigat�rio") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsEndereco,
+			Integer nrTelefone,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 100, message = "O tamanho deve ser entre 5 e 100 caracteres") String dsObservacoes) {
 		super();
-		this.cod_local_enc = cod_local_enc;
-		this.cd_exame_comp = cd_exame_comp;
-		this.nm_clinica = nm_clinica;
-		this.ds_endereco = ds_endereco;
-		this.nr_telefone = nr_telefone;
-		this.ds_observacoes = ds_observacoes;
+		this.codLocalEnc = codLocalEnc;
+		this.cdExameComp = cdExameComp;
+		this.nmClinica = nmClinica;
+		this.dsEndereco = dsEndereco;
+		this.nrTelefone = nrTelefone;
+		this.dsObservacoes = dsObservacoes;
 	}
 
 
-	public Integer getCod_local_enc() {
-		return cod_local_enc;
+	public Integer getCodLocalEnc() {
+		return codLocalEnc;
 	}
 
 
-	public void setCod_local_enc(Integer cod_local_enc) {
-		this.cod_local_enc = cod_local_enc;
+	public void setCodLocalEnc(Integer codLocalEnc) {
+		this.codLocalEnc = codLocalEnc;
 	}
 
 
-	public Integer getCd_exame_comp() {
-		return cd_exame_comp;
+	public Integer getCdExameComp() {
+		return cdExameComp;
 	}
 
 
-	public void setCd_exame_comp(Integer cd_exame_comp) {
-		this.cd_exame_comp = cd_exame_comp;
+	public void setCdExameComp(Integer cdExameComp) {
+		this.cdExameComp = cdExameComp;
 	}
 
 
-	public String getNm_clinica() {
-		return nm_clinica;
+	public String getNmClinica() {
+		return nmClinica;
 	}
 
 
-	public void setNm_clinica(String nm_clinica) {
-		this.nm_clinica = nm_clinica;
+	public void setNmClinica(String nmClinica) {
+		this.nmClinica = nmClinica;
 	}
 
 
-	public String getDs_endereco() {
-		return ds_endereco;
+	public String getDsEndereco() {
+		return dsEndereco;
 	}
 
 
-	public void setDs_endereco(String ds_endereco) {
-		this.ds_endereco = ds_endereco;
+	public void setDsEndereco(String dsEndereco) {
+		this.dsEndereco = dsEndereco;
 	}
 
 
-	public Integer getNr_telefone() {
-		return nr_telefone;
+	public Integer getNrTelefone() {
+		return nrTelefone;
 	}
 
 
-	public void setNr_telefone(Integer nr_telefone) {
-		this.nr_telefone = nr_telefone;
+	public void setNrTelefone(Integer nrTelefone) {
+		this.nrTelefone = nrTelefone;
 	}
 
 
-	public String getDs_observacoes() {
-		return ds_observacoes;
+	public String getDsObservacoes() {
+		return dsObservacoes;
 	}
 
 
-	public void setDs_observacoes(String ds_observacoes) {
-		this.ds_observacoes = ds_observacoes;
+	public void setDsObservacoes(String dsObservacoes) {
+		this.dsObservacoes = dsObservacoes;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_exame_comp);
+		return Objects.hash(cdExameComp);
 	}
 
 
@@ -134,8 +138,9 @@ public class LocaisEnc implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		LocaisEnc other = (LocaisEnc) obj;
-		return Objects.equals(cd_exame_comp, other.cd_exame_comp);
+		return Objects.equals(cdExameComp, other.cdExameComp);
 	}
+
 	
 	
 	

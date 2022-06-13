@@ -34,17 +34,12 @@ public class CargosService {
 	}
 	
 	
-	
 	public Cargos update(Cargos obj) {
-		Cargos newObj = find(obj.getCd_cargo());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		 Cargos objCurrent = repo.save(obj);
+		 return find(objCurrent.getCdCargo());
 	}
 	
-	public void updateData(Cargos newObj, Cargos obj) {
-		newObj.setDs_cargo(obj.getDs_cargo());
-		newObj.setNm_cargo(obj.getNm_cargo());
-	}
+
 	
 	public void delete (Integer id) {
 		find(id);

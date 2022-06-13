@@ -20,49 +20,50 @@ public class Medicos implements Serializable{
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Integer cd_medico;
+	private Integer cdMedico;
 	
-	@Column(unique=true)
-	private Integer cd_laudo;
+	@Column(name="cd_laudo", unique=true)
+	private Integer cdLaudo;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
-	private String nm_medico;
+	@Column(name = "nm_medico")
+	private String nmMedico;
 	
-	@Column(unique=true)
-	private Integer nr_rg;
+	@Column(name="nr_g", unique=true)
+	private Integer nrRg;
 	
-	@Column(unique=true)
-	private Integer nr_cpf;
+	@Column(name="nr_cpf", unique=true)
+	private Integer nrCpf;
 	
-	@Column(unique=true)
-	private Integer nr_crm;
+	@Column(name="nr_crm", unique=true)
+	private Integer nrCrm;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_area;
+	@Column(name="ds_area", unique=true)
+	private String dsArea;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
-	@Column(unique=true)
-	private String ds_especialidades;
+	@Column(name="ds_especialidades", unique=true)
+	private String dsEspecialidades;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
-	@Column(unique=true)
-	private String nm_usuario;
+	@Column(name="nm_usuario", unique=true)
+	private String nmUsuario;
 	
-	@Column(unique=true)
+	@Column(name="ds_senha", unique=true)
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=10, message= "O tamano deve ser entre 1 e 10 caracteres")
-	private String ds_senha;
+	private String dsSenha;
 	
-	@Column(unique=true)
-	private char fl_admin;
+	@Column(name="fl_admin", unique=true)
+	private char flAdmin;
 	
-	@Column(unique=true)
-	private Integer nr_pessoas;
+	@Column(name= "nr_pessoas", unique=true)
+	private Integer nrPessoas;
 	
 	
 	public Medicos() {
@@ -70,148 +71,153 @@ public class Medicos implements Serializable{
 	}
 
 
-	public Medicos(Integer cd_medico, Integer cd_laudo, String nm_medico, Integer nr_rg, Integer nr_cpf, Integer nr_crm,
-			String ds_area, String ds_especialidades, String nm_usuario, String ds_senha, char fl_admin,
-			Integer nr_pessoas) {
+	public Medicos(Integer cdMedico, Integer cdLaudo,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String nmMedico,
+			Integer nrRg, Integer nrCpf, Integer nrCrm,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsArea,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String dsEspecialidades,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 10, message = "O tamanho deve ser entre 1 e 10 caracteres") String nmUsuario,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 10, message = "O tamano deve ser entre 1 e 10 caracteres") String dsSenha,
+			char flAdmin, Integer nrPessoas) {
 		super();
-		this.cd_medico = cd_medico;
-		this.cd_laudo = cd_laudo;
-		this.nm_medico = nm_medico;
-		this.nr_rg = nr_rg;
-		this.nr_cpf = nr_cpf;
-		this.nr_crm = nr_crm;
-		this.ds_area = ds_area;
-		this.ds_especialidades = ds_especialidades;
-		this.nm_usuario = nm_usuario;
-		this.ds_senha = ds_senha;
-		this.fl_admin = fl_admin;
-		this.nr_pessoas = nr_pessoas;
+		this.cdMedico = cdMedico;
+		this.cdLaudo = cdLaudo;
+		this.nmMedico = nmMedico;
+		this.nrRg = nrRg;
+		this.nrCpf = nrCpf;
+		this.nrCrm = nrCrm;
+		this.dsArea = dsArea;
+		this.dsEspecialidades = dsEspecialidades;
+		this.nmUsuario = nmUsuario;
+		this.dsSenha = dsSenha;
+		this.flAdmin = flAdmin;
+		this.nrPessoas = nrPessoas;
 	}
 
 
-	public Integer getCd_medico() {
-		return cd_medico;
+	public Integer getCdMedico() {
+		return cdMedico;
 	}
 
 
-	public void setCd_medico(Integer cd_medico) {
-		this.cd_medico = cd_medico;
+	public void setCdMedico(Integer cdMedico) {
+		this.cdMedico = cdMedico;
 	}
 
 
-	public Integer getCd_laudo() {
-		return cd_laudo;
+	public Integer getCdLaudo() {
+		return cdLaudo;
 	}
 
 
-	public void setCd_laudo(Integer cd_laudo) {
-		this.cd_laudo = cd_laudo;
+	public void setCdLaudo(Integer cdLaudo) {
+		this.cdLaudo = cdLaudo;
 	}
 
 
-	public String getNm_medico() {
-		return nm_medico;
+	public String getNmMedico() {
+		return nmMedico;
 	}
 
 
-	public void setNm_medico(String nm_medico) {
-		this.nm_medico = nm_medico;
+	public void setNmMedico(String nmMedico) {
+		this.nmMedico = nmMedico;
 	}
 
 
-	public Integer getNr_rg() {
-		return nr_rg;
+	public Integer getNrRg() {
+		return nrRg;
 	}
 
 
-	public void setNr_rg(Integer nr_rg) {
-		this.nr_rg = nr_rg;
+	public void setNrRg(Integer nrRg) {
+		this.nrRg = nrRg;
 	}
 
 
-	public Integer getNr_cpf() {
-		return nr_cpf;
+	public Integer getNrCpf() {
+		return nrCpf;
 	}
 
 
-	public void setNr_cpf(Integer nr_cpf) {
-		this.nr_cpf = nr_cpf;
+	public void setNrCpf(Integer nrCpf) {
+		this.nrCpf = nrCpf;
 	}
 
 
-	public Integer getNr_crm() {
-		return nr_crm;
+	public Integer getNrCrm() {
+		return nrCrm;
 	}
 
 
-	public void setNr_crm(Integer nr_crm) {
-		this.nr_crm = nr_crm;
+	public void setNrCrm(Integer nrCrm) {
+		this.nrCrm = nrCrm;
 	}
 
 
-	public String getDs_area() {
-		return ds_area;
+	public String getDsArea() {
+		return dsArea;
 	}
 
 
-	public void setDs_area(String ds_area) {
-		this.ds_area = ds_area;
+	public void setDsArea(String dsArea) {
+		this.dsArea = dsArea;
 	}
 
 
-	public String getDs_especialidades() {
-		return ds_especialidades;
+	public String getDsEspecialidades() {
+		return dsEspecialidades;
 	}
 
 
-	public void setDs_especialidades(String ds_especialidades) {
-		this.ds_especialidades = ds_especialidades;
+	public void setDsEspecialidades(String dsEspecialidades) {
+		this.dsEspecialidades = dsEspecialidades;
 	}
 
 
-	public String getNm_usuario() {
-		return nm_usuario;
+	public String getNmUsuario() {
+		return nmUsuario;
 	}
 
 
-	public void setNm_usuario(String nm_usuario) {
-		this.nm_usuario = nm_usuario;
+	public void setNmUsuario(String nmUsuario) {
+		this.nmUsuario = nmUsuario;
 	}
 
 
-	public String getDs_senha() {
-		return ds_senha;
+	public String getDsSenha() {
+		return dsSenha;
 	}
 
 
-	public void setDs_senha(String ds_senha) {
-		this.ds_senha = ds_senha;
+	public void setDsSenha(String dsSenha) {
+		this.dsSenha = dsSenha;
 	}
 
 
-	public char getFl_admin() {
-		return fl_admin;
+	public char getFlAdmin() {
+		return flAdmin;
 	}
 
 
-	public void setFl_admin(char fl_admin) {
-		this.fl_admin = fl_admin;
+	public void setFlAdmin(char flAdmin) {
+		this.flAdmin = flAdmin;
 	}
 
 
-	public Integer getNr_pessoas() {
-		return nr_pessoas;
+	public Integer getNrPessoas() {
+		return nrPessoas;
 	}
 
 
-	public void setNr_pessoas(Integer nr_pessoas) {
-		this.nr_pessoas = nr_pessoas;
+	public void setNrPessoas(Integer nrPessoas) {
+		this.nrPessoas = nrPessoas;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_laudo);
+		return Objects.hash(cdLaudo);
 	}
 
 
@@ -224,11 +230,9 @@ public class Medicos implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Medicos other = (Medicos) obj;
-		return Objects.equals(cd_laudo, other.cd_laudo);
+		return Objects.equals(cdLaudo, other.cdLaudo);
 	}
-	
-	
-	
+
 	
 	
 }

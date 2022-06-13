@@ -38,17 +38,17 @@ public class FuncionariosResource {
 	@ApiOperation(value = "Insere Funcionarios")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Funcionarios obj){
-		obj.setCd_cargo(null);
+		obj.setCdCargo(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_cargo()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdCargo()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza Funcionarios")
 	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Funcionarios> update(@Valid @RequestBody Funcionarios obj, @PathVariable Integer id){
-		obj.setCd_cargo(id);
+		obj.setCdCargo(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -72,7 +72,7 @@ public class FuncionariosResource {
 	public ResponseEntity<Page<Funcionarios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "nm_funcionario")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmFuncionario")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Funcionarios> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

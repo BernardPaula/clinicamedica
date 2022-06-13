@@ -31,18 +31,8 @@ public class MedicamentosService {
 	}
 	
 	public Medicamentos update(Medicamentos obj) {
-		Medicamentos newObj = find(obj.getCd_medicamento());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	public void updateData(Medicamentos newObj, Medicamentos obj) {
-		newObj.setDs_contraind(obj.getDs_contraind());
-		newObj.setDs_generico(obj.getDs_contraind());
-		newObj.setDs_laboratorio(obj.getDs_laboratorio());
-		newObj.setDs_posologia(obj.getDs_posologia());
-		newObj.setDs_substancia(obj.getDs_substancia());
-		newObj.setNm_medicamento(obj.getNm_medicamento());
+		Medicamentos newObj = repo.save(obj);		
+		return find(newObj.getCdMedicamento());	
 	}
 	
 	public void delete(Integer id) {

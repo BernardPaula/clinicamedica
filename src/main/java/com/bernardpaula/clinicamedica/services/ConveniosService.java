@@ -30,21 +30,15 @@ public class ConveniosService {
 	
 	
 	public Convenios insert (Convenios obj) {
-		obj.setCd_convenio(null);
+		obj.setCdConvenio(null);
 		return repo.save(obj);
 	}
 	
 	public Convenios update(Convenios obj) {
-		Convenios newObj = find(obj.getCd_convenio());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		Convenios newObj = repo.save(obj);
+		return find(newObj.getCdConvenio());
 	}
 	
-	public void updateData(Convenios newObj, Convenios obj) {
-		newObj.setDs_regioes(obj.getDs_regioes());
-		newObj.setDt_inicio(obj.getDt_inicio());
-		newObj.setNm_convenio(obj.getNm_convenio());
-	}
 	
 	public void delete(Integer id) {
 		repo.deleteById(id);

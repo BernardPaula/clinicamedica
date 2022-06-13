@@ -38,7 +38,7 @@ public class CargosResource {
 	@ApiOperation(value= "Insere Cargos")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
 	public ResponseEntity<Cargos> insert(@Valid @RequestBody Cargos obj){
-		obj.setCd_cargo(null);
+		obj.setCdCargo(null);
 		obj = service.insert(obj);
 		
 		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_cargo()).toUri();
@@ -49,7 +49,7 @@ public class CargosResource {
 	@ApiOperation(value = "Atualiza Cargos")
 	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Cargos> update(@Valid @RequestBody Cargos obj, @PathVariable Integer id){
-		obj.setCd_cargo(id);
+		obj.setCdCargo(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -76,7 +76,7 @@ public class CargosResource {
 	public ResponseEntity<Page<Cargos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "nm_cargo")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmCargo")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Cargos> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

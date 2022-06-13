@@ -36,17 +36,17 @@ public class LogAcessoResource {
 	@ApiOperation(value = "Insere LogAcesso")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST )
 	public ResponseEntity<Void> insert(@RequestBody LogAcesso obj){
-		obj.setCd_acesso(null);
+		obj.setCdAcesso(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_acesso()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdAcesso()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza LogAcesso")
 	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<LogAcesso> update(@RequestBody LogAcesso obj, @PathVariable Integer id){
-		obj.setCd_acesso(id);
+		obj.setCdAcesso(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class LogAcessoResource {
 	public ResponseEntity<Page<LogAcesso>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "nm_usuario")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmUsuario")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<LogAcesso> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

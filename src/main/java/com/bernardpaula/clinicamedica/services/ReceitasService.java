@@ -31,20 +31,10 @@ public class ReceitasService {
 	}
 	
 	public Receitas update(Receitas obj) {
-		Receitas newObj = find(obj.getCd_receitas());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		Receitas newObj = repo.save(obj);
+		return find(newObj.getCdReceitas());
 	}
-	
-	public void updateData(Receitas newObj, Receitas obj) {
-		newObj.setCd_clinica(obj.getCd_clinica());
-		newObj.setCd_exame(obj.getCd_exame());
-		newObj.setCd_medicamento(obj.getCd_medicamento());
-		newObj.setCd_medico(obj.getCd_medico());
-		newObj.setCd_paciente(obj.getCd_paciente());
-		newObj.setDs_observacoes(obj.getDs_observacoes());
-		newObj.setDs_posologia(obj.getDs_posologia());
-	}
+
 	
 	public void delete(Integer id) {
 		find(id);

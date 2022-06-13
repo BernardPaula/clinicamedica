@@ -37,17 +37,18 @@ public class ClinicasResource {
 	
 	@ApiOperation(value = "Insere Clinicas")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody Clinicas obj){
+	public ResponseEntity<Clinicas> insert(@Valid @RequestBody Clinicas obj){
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_clinica()).toUri();
-		return ResponseEntity.created(uri).build();
+		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdClinica()).toUri();
+		//return ResponseEntity.created(uri).build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value = "Atualiza Clinicas")
 	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Clinicas> update(@Valid @RequestBody Clinicas obj, @PathVariable Integer id){
-		obj.setCd_clinica(id);
+		obj.setCdClinica(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +71,7 @@ public class ClinicasResource {
 	public ResponseEntity<Page<Clinicas>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "nm_clinica")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmClinica")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Clinicas> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

@@ -23,34 +23,34 @@ public class Receitas implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_receitas;
+	private Integer cdReceitas;
 	
-	@Column(unique=true)
+	@Column(name="cd_paciente", unique=true)
 	private Integer cd_paciente;
 	
-	@Column(unique=true)
+	@Column(name="cd_medico", unique=true)
 	private Integer cd_medico;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
 	private Date dt_receita;    // - esta como DATETIME
 	
-	@Column(unique=true)
+	@Column(name="cd_medicamento", unique=true)
 	private Integer cd_medicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
+	@Column(name="ds_posologia", unique=true)
 	private String ds_posologia;
 	
-	@Column(unique=true)
+	@Column(name="cd_exame", unique=true)
 	private Integer cd_exame;
 	
-	@Column(unique=true)
+	@Column(name="cd_clinica", unique=true)
 	private Integer cd_clinica;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=100, message= "O tamanho deve ser entre 1 e 100 caracteres")
-	@Column(unique=true)
+	@Column(name="ds_observacoes", unique=true)
 	private String ds_observacoes;
 	
 	
@@ -59,10 +59,12 @@ public class Receitas implements Serializable{
 	}
 
 
-	public Receitas(Integer cd_receitas, Integer cd_paciente, Integer cd_medico, Date dt_receita,
-			Integer cd_medicamento, String ds_posologia, Integer cd_exame, Integer cd_clinica, String ds_observacoes) {
+	public Receitas(Integer cdReceitas, Integer cd_paciente, Integer cd_medico, Date dt_receita, Integer cd_medicamento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String ds_posologia,
+			Integer cd_exame, Integer cd_clinica,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 100, message = "O tamanho deve ser entre 1 e 100 caracteres") String ds_observacoes) {
 		super();
-		this.cd_receitas = cd_receitas;
+		this.cdReceitas = cdReceitas;
 		this.cd_paciente = cd_paciente;
 		this.cd_medico = cd_medico;
 		this.dt_receita = dt_receita;
@@ -74,13 +76,13 @@ public class Receitas implements Serializable{
 	}
 
 
-	public Integer getCd_receitas() {
-		return cd_receitas;
+	public Integer getCdReceitas() {
+		return cdReceitas;
 	}
 
 
-	public void setCd_receitas(Integer cd_receitas) {
-		this.cd_receitas = cd_receitas;
+	public void setCdReceitas(Integer cdReceitas) {
+		this.cdReceitas = cdReceitas;
 	}
 
 
@@ -166,7 +168,7 @@ public class Receitas implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_clinica);
+		return Objects.hash(cdReceitas);
 	}
 
 
@@ -179,9 +181,9 @@ public class Receitas implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Receitas other = (Receitas) obj;
-		return Objects.equals(cd_clinica, other.cd_clinica);
+		return Objects.equals(cdReceitas, other.cdReceitas);
 	}
-	
+
 	
 	
 	

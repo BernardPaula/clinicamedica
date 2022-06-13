@@ -35,14 +35,8 @@ public class LogAcessoService {
 	}
 	
 	public LogAcesso update(LogAcesso obj) {
-		LogAcesso newObj = find(obj.getCd_acesso());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	public void updateData(LogAcesso newObj, LogAcesso obj) {
-		newObj.setCd_acesso(obj.getCd_acesso());
-		newObj.setNm_usuario(obj.getNm_usuario());
+		LogAcesso newObj = repo.save(obj);	
+		return find(newObj.getCdAcesso());
 	}
 	
 	public void delete (Integer id) {

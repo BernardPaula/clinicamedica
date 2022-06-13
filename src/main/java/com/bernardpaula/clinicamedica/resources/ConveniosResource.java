@@ -38,14 +38,14 @@ public class ConveniosResource {
 	public ResponseEntity<Void> insert(@RequestBody Convenios obj){
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_convenio()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdConvenio()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza Convenios")
 	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Convenios> update(@RequestBody Convenios obj, @PathVariable Integer id){
-		obj.setCd_convenio(id);
+		obj.setCdConvenio(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -69,7 +69,7 @@ public class ConveniosResource {
 	public ResponseEntity<Page<Convenios>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "nm_convenio")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmConvenio")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Convenios> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

@@ -20,20 +20,20 @@ public class ExamesComp implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_exame_comp;
+	private Integer cdExameComp;
 	
-	@Column(unique=true)
-	private Integer cd_receita;
+	@Column(name="ce_receita", unique=true)
+	private Integer cdReceita;
 	
-	@NotEmpty(message= "Preenchimento obrigat�rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String nm_exame;
+	@Column(name="nm_exame", unique=true)
+	private String nmExame;
 	
-	@NotEmpty(message= "Preenchimento obrigat�ri")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=300, message = "O tamanho deve ser entre 1 e 300 caracteres")
-	@Column(unique=true)
-	private String ds_observacao;
+	@Column(name="ds_observacao", unique=true)
+	private String dsObservacao;
 	
 	
 	public ExamesComp() {
@@ -41,58 +41,60 @@ public class ExamesComp implements Serializable {
 	}
 
 
-	public ExamesComp(Integer cd_exame_comp, Integer cd_receita, String nm_exame, String ds_observacao) {
+	public ExamesComp(Integer cdExameComp, Integer cdReceita,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String nmExame,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 300, message = "O tamanho deve ser entre 1 e 300 caracteres") String dsObservacao) {
 		super();
-		this.cd_exame_comp = cd_exame_comp;
-		this.cd_receita = cd_receita;
-		this.nm_exame = nm_exame;
-		this.ds_observacao = ds_observacao;
+		this.cdExameComp = cdExameComp;
+		this.cdReceita = cdReceita;
+		this.nmExame = nmExame;
+		this.dsObservacao = dsObservacao;
 	}
 
 
-	public Integer getCd_exame_comp() {
-		return cd_exame_comp;
+	public Integer getCdExameComp() {
+		return cdExameComp;
 	}
 
 
-	public void setCd_exame_comp(Integer cd_exame_comp) {
-		this.cd_exame_comp = cd_exame_comp;
+	public void setCdExameComp(Integer cdExameComp) {
+		this.cdExameComp = cdExameComp;
 	}
 
 
-	public Integer getCd_receita() {
-		return cd_receita;
+	public Integer getCdReceita() {
+		return cdReceita;
 	}
 
 
-	public void setCd_receita(Integer cd_receita) {
-		this.cd_receita = cd_receita;
+	public void setCdReceita(Integer cdReceita) {
+		this.cdReceita = cdReceita;
 	}
 
 
-	public String getNm_exame() {
-		return nm_exame;
+	public String getNmExame() {
+		return nmExame;
 	}
 
 
-	public void setNm_exame(String nm_exame) {
-		this.nm_exame = nm_exame;
+	public void setNmExame(String nmExame) {
+		this.nmExame = nmExame;
 	}
 
 
-	public String getDs_observacao() {
-		return ds_observacao;
+	public String getDsObservacao() {
+		return dsObservacao;
 	}
 
 
-	public void setDs_observacao(String ds_observacao) {
-		this.ds_observacao = ds_observacao;
+	public void setDsObservacao(String dsObservacao) {
+		this.dsObservacao = dsObservacao;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_exame_comp);
+		return Objects.hash(cdExameComp);
 	}
 
 
@@ -105,10 +107,9 @@ public class ExamesComp implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ExamesComp other = (ExamesComp) obj;
-		return Objects.equals(cd_exame_comp, other.cd_exame_comp);
+		return Objects.equals(cdExameComp, other.cdExameComp);
 	}
 
-	
 	
 	
 }

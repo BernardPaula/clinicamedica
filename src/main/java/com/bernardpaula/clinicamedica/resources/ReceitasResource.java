@@ -36,17 +36,17 @@ public class ReceitasResource {
 	@ApiOperation(value = "Insere Receitas")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Receitas obj){
-		obj.setCd_receitas(null);
+		obj.setCdReceitas(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_receitas()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdReceitas()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza Receitas")
 	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Receitas> update(@RequestBody Receitas obj, @PathVariable Integer id){
-		obj.setCd_receitas(id);
+		obj.setCdReceitas(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class ReceitasResource {
 	public ResponseEntity<Page<Receitas>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "ds_posologia")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "dsPosologia")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "0")String direction){
 		Page<Receitas> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

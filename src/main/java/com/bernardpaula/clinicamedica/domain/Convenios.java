@@ -23,78 +23,81 @@ public class Convenios implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_convenio;
+	private Integer cdConvenio;
 	
-	@NotEmpty(message= "Preenchimento obrigat�rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=20, message= "O tamanho deve ser entre 1 e 20 caracteres")
-	@Column(unique=true)
-	private String nm_convenio;
+	@Column(name="nm_convenio",unique=true)
+	private String nmConvenio;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_inicio;
+	private Date dtInicio;
 	
-	@NotEmpty(message= "Preenchimento obrigat�rio")
+	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String ds_regioes;
+	@Column(name="ds_regioes", unique=true)
+	private String dsRegioes;
 	
 	
 	public Convenios() {
 	}
 
 
-	public Convenios(Integer cd_convenio, String nm_convenio, Date dt_inicio, String ds_regioes) {
+	public Convenios(Integer cdConvenio,
+			@NotEmpty(message = "Preenchimento obrigat�rio") @Length(min = 1, max = 20, message = "O tamanho deve ser entre 1 e 20 caracteres") String nmConvenio,
+			Date dtInicio,
+			@NotEmpty(message = "Preenchimento obrigat�rio") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsRegioes) {
 		super();
-		this.cd_convenio = cd_convenio;
-		this.nm_convenio = nm_convenio;
-		this.dt_inicio = dt_inicio;
-		this.ds_regioes = ds_regioes;
+		this.cdConvenio = cdConvenio;
+		this.nmConvenio = nmConvenio;
+		this.dtInicio = dtInicio;
+		this.dsRegioes = dsRegioes;
 	}
 
 
-	public Integer getCd_convenio() {
-		return cd_convenio;
+	public Integer getCdConvenio() {
+		return cdConvenio;
 	}
 
 
-	public void setCd_convenio(Integer cd_convenio) {
-		this.cd_convenio = cd_convenio;
+	public void setCdConvenio(Integer cdConvenio) {
+		this.cdConvenio = cdConvenio;
 	}
 
 
-	public String getNm_convenio() {
-		return nm_convenio;
+	public String getNmConvenio() {
+		return nmConvenio;
 	}
 
 
-	public void setNm_convenio(String nm_convenio) {
-		this.nm_convenio = nm_convenio;
+	public void setNmConvenio(String nmConvenio) {
+		this.nmConvenio = nmConvenio;
 	}
 
 
-	public Date getDt_inicio() {
-		return dt_inicio;
+	public Date getDtInicio() {
+		return dtInicio;
 	}
 
 
-	public void setDt_inicio(Date dt_inicio) {
-		this.dt_inicio = dt_inicio;
+	public void setDtInicio(Date dtInicio) {
+		this.dtInicio = dtInicio;
 	}
 
 
-	public String getDs_regioes() {
-		return ds_regioes;
+	public String getDsRegioes() {
+		return dsRegioes;
 	}
 
 
-	public void setDs_regioes(String ds_regioes) {
-		this.ds_regioes = ds_regioes;
+	public void setDsRegioes(String dsRegioes) {
+		this.dsRegioes = dsRegioes;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_convenio);
+		return Objects.hash(cdConvenio);
 	}
 
 
@@ -107,11 +110,8 @@ public class Convenios implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Convenios other = (Convenios) obj;
-		return Objects.equals(cd_convenio, other.cd_convenio);
+		return Objects.equals(cdConvenio, other.cdConvenio);
 	}
-
-
-	
 	
 	
 }

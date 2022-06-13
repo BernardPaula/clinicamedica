@@ -32,17 +32,8 @@ public class LocaisEncService {
 	}
 	
 	public LocaisEnc update(LocaisEnc obj) {
-		LocaisEnc newObj = find(obj.getCod_local_enc());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	private void updateData(LocaisEnc newObj, LocaisEnc obj) {
-		newObj.setCd_exame_comp(obj.getCd_exame_comp());
-		newObj.setDs_endereco(obj.getDs_endereco());
-		newObj.setDs_observacoes(obj.getDs_observacoes());
-		newObj.setNm_clinica(obj.getNm_clinica());
-		newObj.setNr_telefone(obj.getNr_telefone());
+		LocaisEnc newObj = repo.save(obj);
+		return find(newObj.getCodLocalEnc());
 	}
 	
 	public void delete (Integer id) {

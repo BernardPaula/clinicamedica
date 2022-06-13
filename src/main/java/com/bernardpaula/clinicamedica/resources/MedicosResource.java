@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/medicos")
-public class MidicosResource {
+public class MedicosResource {
 
 	@Autowired
 	private MedicosService service;
@@ -36,17 +36,17 @@ public class MidicosResource {
 	@ApiOperation(value = "Insere Medicos")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Medicos obj){
-		obj.setCd_medico(null);
+		obj.setCdMedico(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_medico()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdMedico()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza Medicos")
 	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Medicos> update(@RequestBody Medicos obj, @PathVariable Integer id){
-		obj.setCd_medico(id);
+		obj.setCdMedico(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class MidicosResource {
 	public ResponseEntity<Page<Medicos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "nm_medico")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmMedico")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Medicos> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

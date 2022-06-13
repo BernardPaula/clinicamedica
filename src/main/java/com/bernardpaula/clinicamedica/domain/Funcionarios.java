@@ -18,70 +18,75 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name= "funcionarios")
+@Table(name = "funcionarios")
 public class Funcionarios implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_funcionario;
+	private Integer cdFuncionario;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
-	private String nm_funcionario;
+	@Column(name="nm_funcionario", unique=true)
+	private String nmFuncionario;
 	
-	@Column(unique=true)
-	private Integer cd_clinica;
+	@Column(name="cd_clinica", unique=true)
+	private Integer cdClinica;
 	
-	@Column(unique=true)
-	private Integer nr_rg;
+	@Column(name="nr_RG", unique=true)
+	private Integer nrRg;
 	
 	@CPF
-	@Column(unique=true)
-	private Integer nr_cpf;
+	@Column(name="nr_cpf", unique=true)
+	private Integer nrCpf;
 	
-	@Column(unique=true)
-	private Integer cd_cargo;
+	@Column(name="cd_cargo", unique=true)
+	private Integer cdCargo;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
-	private String ds_endereco;
+	@Column(name="ds_endereco", unique=true)
+	private String dsEndereco;
 	
-	@Column(unique=true)
-	private Integer nr_numero;
+	@Column(name="nr_numero", unique=true)
+	private Integer nrNumero;
 	
-	@Column(unique=true)
-	private Integer ds_complemento;
+	@Column(name="ds_complemento", unique=true)
+	private Integer dsComplemento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=15, message= "O tamanho deve ser entre 1 e 15 caracteres")
-	private String ds_bairro;
+	@Column(name="ds_bairro", unique=true)
+	private String dsBairro;
 	
-	@Column(unique=true)
-	private Integer nr_cep;
+	@Column(name="nr_cep", unique=true)
+	private Integer nrCep;
 	
-	@Column(unique=true)
-	private Integer nr_telres;
+	@Column(name="nr_telres", unique=true)
+	private Integer nrTelres;
 	
-	@Column(unique=true)
-	private Integer nr_telcel;
-	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
-	private String nm_usuario;
+	@Column(name="nr_telcel", unique=true)
+	private Integer nrTelcel;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
-	private String ds_senha;
+	@Column(name="nm_usuario", unique=true)
+	private String nmUsuario;
 	
-	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_ecesso;     // esta como DATETIME
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
+	@Column(name="ds_senha", unique=true)
+	private String dsSenha;
 	
-	@Column(unique=true)
-	private Integer nr_acessos;
+	@JsonFormat( pattern = "yyyy/MM/dd")
+	private Date dtEcesso;     // esta como DATETIME
 	
-	@Column(unique=true)
-	private char fl_admin;
+	@Column(name="nr_acessos", unique=true)
+	private Integer nrAcessos;
+	
+	@Column(name="fl_admin", unique=true)
+	private char flAdmin;
 	
 	
 	public Funcionarios() {
@@ -89,215 +94,221 @@ public class Funcionarios implements Serializable{
 	}
 
 
-	public Funcionarios(Integer cd_funcionario, String nm_funcionario, Integer cd_clinica, Integer nr_rg,
-			Integer nr_cpf, Integer cd_cargo, String ds_endereco, Integer nr_numero, Integer ds_complemento,
-			String ds_bairro, Integer nr_cep, Integer nr_telres, Integer nr_telcel, String nm_usuario, String ds_senha,
-			Date dt_ecesso, Integer nr_acessos, char fl_admin) {
+	public Funcionarios(Integer cdFuncionario,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String nmFuncionario,
+			Integer cdClinica, Integer nrRg, @CPF Integer nrCpf, Integer cdCargo,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsEndereco,
+			Integer nrNumero, Integer dsComplemento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 15, message = "O tamanho deve ser entre 1 e 15 caracteres") String dsBairro,
+			Integer nrCep, Integer nrTelres, Integer nrTelcel,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 10, message = "O tamanho deve ser entre 1 e 10 caracteres") String nmUsuario,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 10, message = "O tamanho deve ser entre 1 e 10 caracteres") String dsSenha,
+			Date dtEcesso, Integer nrAcessos, char flAdmin) {
 		super();
-		this.cd_funcionario = cd_funcionario;
-		this.nm_funcionario = nm_funcionario;
-		this.cd_clinica = cd_clinica;
-		this.nr_rg = nr_rg;
-		this.nr_cpf = nr_cpf;
-		this.cd_cargo = cd_cargo;
-		this.ds_endereco = ds_endereco;
-		this.nr_numero = nr_numero;
-		this.ds_complemento = ds_complemento;
-		this.ds_bairro = ds_bairro;
-		this.nr_cep = nr_cep;
-		this.nr_telres = nr_telres;
-		this.nr_telcel = nr_telcel;
-		this.nm_usuario = nm_usuario;
-		this.ds_senha = ds_senha;
-		this.dt_ecesso = dt_ecesso;
-		this.nr_acessos = nr_acessos;
-		this.fl_admin = fl_admin;
+		this.cdFuncionario = cdFuncionario;
+		this.nmFuncionario = nmFuncionario;
+		this.cdClinica = cdClinica;
+		this.nrRg = nrRg;
+		this.nrCpf = nrCpf;
+		this.cdCargo = cdCargo;
+		this.dsEndereco = dsEndereco;
+		this.nrNumero = nrNumero;
+		this.dsComplemento = dsComplemento;
+		this.dsBairro = dsBairro;
+		this.nrCep = nrCep;
+		this.nrTelres = nrTelres;
+		this.nrTelcel = nrTelcel;
+		this.nmUsuario = nmUsuario;
+		this.dsSenha = dsSenha;
+		this.dtEcesso = dtEcesso;
+		this.nrAcessos = nrAcessos;
+		this.flAdmin = flAdmin;
 	}
 
 
-	public Integer getCd_funcionario() {
-		return cd_funcionario;
+	public Integer getCdFuncionario() {
+		return cdFuncionario;
 	}
 
 
-	public void setCd_funcionario(Integer cd_funcionario) {
-		this.cd_funcionario = cd_funcionario;
+	public void setCdFuncionario(Integer cdFuncionario) {
+		this.cdFuncionario = cdFuncionario;
 	}
 
 
-	public String getNm_funcionario() {
-		return nm_funcionario;
+	public String getNmFuncionario() {
+		return nmFuncionario;
 	}
 
 
-	public void setNm_funcionario(String nm_funcionario) {
-		this.nm_funcionario = nm_funcionario;
+	public void setNmFuncionario(String nmFuncionario) {
+		this.nmFuncionario = nmFuncionario;
 	}
 
 
-	public Integer getCd_clinica() {
-		return cd_clinica;
+	public Integer getCdClinica() {
+		return cdClinica;
 	}
 
 
-	public void setCd_clinica(Integer cd_clinica) {
-		this.cd_clinica = cd_clinica;
+	public void setCdClinica(Integer cdClinica) {
+		this.cdClinica = cdClinica;
 	}
 
 
-	public Integer getNr_rg() {
-		return nr_rg;
+	public Integer getNrRg() {
+		return nrRg;
 	}
 
 
-	public void setNr_rg(Integer nr_rg) {
-		this.nr_rg = nr_rg;
+	public void setNrRg(Integer nrRg) {
+		this.nrRg = nrRg;
 	}
 
 
-	public Integer getNr_cpf() {
-		return nr_cpf;
+	public Integer getNrCpf() {
+		return nrCpf;
 	}
 
 
-	public void setNr_cpf(Integer nr_cpf) {
-		this.nr_cpf = nr_cpf;
+	public void setNrCpf(Integer nrCpf) {
+		this.nrCpf = nrCpf;
 	}
 
 
-	public Integer getCd_cargo() {
-		return cd_cargo;
+	public Integer getCdCargo() {
+		return cdCargo;
 	}
 
 
-	public void setCd_cargo(Integer cd_cargo) {
-		this.cd_cargo = cd_cargo;
+	public void setCdCargo(Integer cdCargo) {
+		this.cdCargo = cdCargo;
 	}
 
 
-	public String getDs_endereco() {
-		return ds_endereco;
+	public String getDsEndereco() {
+		return dsEndereco;
 	}
 
 
-	public void setDs_endereco(String ds_endereco) {
-		this.ds_endereco = ds_endereco;
+	public void setDsEndereco(String dsEndereco) {
+		this.dsEndereco = dsEndereco;
 	}
 
 
-	public Integer getNr_numero() {
-		return nr_numero;
+	public Integer getNrNumero() {
+		return nrNumero;
 	}
 
 
-	public void setNr_numero(Integer nr_numero) {
-		this.nr_numero = nr_numero;
+	public void setNrNumero(Integer nrNumero) {
+		this.nrNumero = nrNumero;
 	}
 
 
-	public Integer getDs_complemento() {
-		return ds_complemento;
+	public Integer getDsComplemento() {
+		return dsComplemento;
 	}
 
 
-	public void setDs_complemento(Integer ds_complemento) {
-		this.ds_complemento = ds_complemento;
+	public void setDsComplemento(Integer dsComplemento) {
+		this.dsComplemento = dsComplemento;
 	}
 
 
-	public String getDs_bairro() {
-		return ds_bairro;
+	public String getDsBairro() {
+		return dsBairro;
 	}
 
 
-	public void setDs_bairro(String ds_bairro) {
-		this.ds_bairro = ds_bairro;
+	public void setDsBairro(String dsBairro) {
+		this.dsBairro = dsBairro;
 	}
 
 
-	public Integer getNr_cep() {
-		return nr_cep;
+	public Integer getNrCep() {
+		return nrCep;
 	}
 
 
-	public void setNr_cep(Integer nr_cep) {
-		this.nr_cep = nr_cep;
+	public void setNrCep(Integer nrCep) {
+		this.nrCep = nrCep;
 	}
 
 
-	public Integer getNr_telres() {
-		return nr_telres;
+	public Integer getNrTelres() {
+		return nrTelres;
 	}
 
 
-	public void setNr_telres(Integer nr_telres) {
-		this.nr_telres = nr_telres;
+	public void setNrTelres(Integer nrTelres) {
+		this.nrTelres = nrTelres;
 	}
 
 
-	public Integer getNr_telcel() {
-		return nr_telcel;
+	public Integer getNrTelcel() {
+		return nrTelcel;
 	}
 
 
-	public void setNr_telcel(Integer nr_telcel) {
-		this.nr_telcel = nr_telcel;
+	public void setNrTelcel(Integer nrTelcel) {
+		this.nrTelcel = nrTelcel;
 	}
 
 
-	public String getNm_usuario() {
-		return nm_usuario;
+	public String getNmUsuario() {
+		return nmUsuario;
 	}
 
 
-	public void setNm_usuario(String nm_usuario) {
-		this.nm_usuario = nm_usuario;
+	public void setNmUsuario(String nmUsuario) {
+		this.nmUsuario = nmUsuario;
 	}
 
 
-	public String getDs_senha() {
-		return ds_senha;
+	public String getDsSenha() {
+		return dsSenha;
 	}
 
 
-	public void setDs_senha(String ds_senha) {
-		this.ds_senha = ds_senha;
+	public void setDsSenha(String dsSenha) {
+		this.dsSenha = dsSenha;
 	}
 
 
-	public Date getDt_ecesso() {
-		return dt_ecesso;
+	public Date getDtEcesso() {
+		return dtEcesso;
 	}
 
 
-	public void setDt_ecesso(Date dt_ecesso) {
-		this.dt_ecesso = dt_ecesso;
+	public void setDtEcesso(Date dtEcesso) {
+		this.dtEcesso = dtEcesso;
 	}
 
 
-	public Integer getNr_acessos() {
-		return nr_acessos;
+	public Integer getNrAcessos() {
+		return nrAcessos;
 	}
 
 
-	public void setNr_acessos(Integer nr_acessos) {
-		this.nr_acessos = nr_acessos;
+	public void setNrAcessos(Integer nrAcessos) {
+		this.nrAcessos = nrAcessos;
 	}
 
 
-	public char getFl_admin() {
-		return fl_admin;
+	public char getFlAdmin() {
+		return flAdmin;
 	}
 
 
-	public void setFl_admin(char fl_admin) {
-		this.fl_admin = fl_admin;
+	public void setFlAdmin(char flAdmin) {
+		this.flAdmin = flAdmin;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_cargo);
+		return Objects.hash(cdCargo);
 	}
 
 
@@ -310,9 +321,8 @@ public class Funcionarios implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionarios other = (Funcionarios) obj;
-		return Objects.equals(cd_cargo, other.cd_cargo);
+		return Objects.equals(cdCargo, other.cdCargo);
 	}
-	
-	
+
 	
 }

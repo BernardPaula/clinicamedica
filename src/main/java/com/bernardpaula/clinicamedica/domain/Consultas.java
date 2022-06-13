@@ -23,27 +23,29 @@ public class Consultas implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_consulta;
+	private Integer cdConsulta;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date dt_consulta;
+	@Column(name="dt_consulta", unique=true)
+	private Date dtConsulta;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date nr_horairo;   
+	@Column(name="nr_horario", unique=true)
+	private Date nrHorairo;   
 	
-	@Column(unique=true)
-	private Integer cd_paciente;
+	@Column(name="cd_paciente", unique=true)
+	private Integer cdPaciente;
 	
-	@Column(unique=true)
-	private Integer cd_convenio;
+	@Column(name="cd_convenio", unique=true)
+	private Integer cdConvenio;
 	
-	@Column(unique=true)
-	private Integer cd_medico;
+	@Column(name="cd_medico", unique=true)
+	private Integer cdMedico;
 	
 	@NotEmpty(message = "preenchimento obrigat�rio")
 	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
-	@Column(unique=true)
-	private String ds_tipo;
+	@Column(name="ds_tipo", unique=true)
+	private String dsTipo;
 
 	
 	public Consultas() {
@@ -51,92 +53,93 @@ public class Consultas implements Serializable {
 	}
 
 
-	public Consultas(Integer cd_consulta, Date dt_consulta, Date nr_horairo, Integer cd_paciente, Integer cd_convenio,
-			Integer cd_medico, String ds_tipo) {
+	public Consultas(Integer cdConsulta, Date dtConsulta, Date nrHorairo, Integer cdPaciente, Integer cdConvenio,
+			Integer cdMedico,
+			@NotEmpty(message = "preenchimento obrigat�rio") @Length(min = 1, max = 20, message = "O tamanho deve ser entre 1 e 20 caracteres") String dsTipo) {
 		super();
-		this.cd_consulta = cd_consulta;
-		this.dt_consulta = dt_consulta;
-		this.nr_horairo = nr_horairo;
-		this.cd_paciente = cd_paciente;
-		this.cd_convenio = cd_convenio;
-		this.cd_medico = cd_medico;
-		this.ds_tipo = ds_tipo;
+		this.cdConsulta = cdConsulta;
+		this.dtConsulta = dtConsulta;
+		this.nrHorairo = nrHorairo;
+		this.cdPaciente = cdPaciente;
+		this.cdConvenio = cdConvenio;
+		this.cdMedico = cdMedico;
+		this.dsTipo = dsTipo;
 	}
 
 
-	public Integer getCd_consulta() {
-		return cd_consulta;
+	public Integer getCdConsulta() {
+		return cdConsulta;
 	}
 
 
-	public void setCd_consulta(Integer cd_consulta) {
-		this.cd_consulta = cd_consulta;
+	public void setCdConsulta(Integer cdConsulta) {
+		this.cdConsulta = cdConsulta;
 	}
 
 
-	public Date getDt_consulta() {
-		return dt_consulta;
+	public Date getDtConsulta() {
+		return dtConsulta;
 	}
 
 
-	public void setDt_consulta(Date dt_consulta) {
-		this.dt_consulta = dt_consulta;
+	public void setDtConsulta(Date dtConsulta) {
+		this.dtConsulta = dtConsulta;
 	}
 
 
-	public Date getNr_horairo() {
-		return nr_horairo;
+	public Date getNrHorairo() {
+		return nrHorairo;
 	}
 
 
-	public void setNr_horairo(Date nr_horairo) {
-		this.nr_horairo = nr_horairo;
+	public void setNrHorairo(Date nrHorairo) {
+		this.nrHorairo = nrHorairo;
 	}
 
 
-	public Integer getCd_paciente() {
-		return cd_paciente;
+	public Integer getCdPaciente() {
+		return cdPaciente;
 	}
 
 
-	public void setCd_paciente(Integer cd_paciente) {
-		this.cd_paciente = cd_paciente;
+	public void setCdPaciente(Integer cdPaciente) {
+		this.cdPaciente = cdPaciente;
 	}
 
 
-	public Integer getCd_convenio() {
-		return cd_convenio;
+	public Integer getCdConvenio() {
+		return cdConvenio;
 	}
 
 
-	public void setCd_convenio(Integer cd_convenio) {
-		this.cd_convenio = cd_convenio;
+	public void setCdConvenio(Integer cdConvenio) {
+		this.cdConvenio = cdConvenio;
 	}
 
 
-	public Integer getCd_medico() {
-		return cd_medico;
+	public Integer getCdMedico() {
+		return cdMedico;
 	}
 
 
-	public void setCd_medico(Integer cd_medico) {
-		this.cd_medico = cd_medico;
+	public void setCdMedico(Integer cdMedico) {
+		this.cdMedico = cdMedico;
 	}
 
 
-	public String getDs_tipo() {
-		return ds_tipo;
+	public String getDsTipo() {
+		return dsTipo;
 	}
 
 
-	public void setDs_tipo(String ds_tipo) {
-		this.ds_tipo = ds_tipo;
+	public void setDsTipo(String dsTipo) {
+		this.dsTipo = dsTipo;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_consulta);
+		return Objects.hash(cdConsulta);
 	}
 
 
@@ -149,9 +152,10 @@ public class Consultas implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Consultas other = (Consultas) obj;
-		return Objects.equals(cd_consulta, other.cd_consulta);
+		return Objects.equals(cdConsulta, other.cdConsulta);
 	}
-	
+
+
 	
 	
 }

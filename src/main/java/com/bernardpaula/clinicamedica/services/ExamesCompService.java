@@ -33,16 +33,8 @@ public class ExamesCompService {
 	
 	
 	public ExamesComp update(ExamesComp obj) {
-		ExamesComp newObj = find(obj.getCd_exame_comp());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	
-	public void updateData(ExamesComp newObj, ExamesComp obj) {
-		newObj.setCd_receita(obj.getCd_receita());
-		newObj.setDs_observacao(obj.getDs_observacao());
-		newObj.setNm_exame(obj.getNm_exame());
+		ExamesComp newObj = repo.save(obj);
+		return find(newObj.getCdExameComp());
 	}
 	
 	

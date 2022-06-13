@@ -28,32 +28,17 @@ public class ClinicasService {
 	}
 	
 	public Clinicas insert(Clinicas obj) {
-		obj.setCd_clinica(null);
+		obj.setCdClinica(null);
 		return repo.save(obj);
 	}
 	
 	public Clinicas update (Clinicas obj) {
-		Clinicas newObj = find(obj.getCd_clinica());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		
+	Clinicas objCurrent = repo.save(obj);
+	return find(objCurrent.getCdClinica());
 	}
 	
-	private void updateData(Clinicas newObj, Clinicas obj) {
-		newObj.setDs_bairro(obj.getDs_bairro());
-		newObj.setDs_cidade(obj.getDs_cidade());
-		newObj.setDs_complemento(obj.getDs_complemento());
-		newObj.setDs_email(obj.getDs_email());
-		newObj.setDs_endereco(obj.getDs_endereco());
-		newObj.setDs_especialidades(obj.getDs_especialidades());
-		newObj.setDs_uf(obj.getDs_uf());
-		newObj.setNm_clinica(obj.getNm_clinica());
-		newObj.setNr_cep(obj.getNr_cep());
-		newObj.setNr_cnpj(obj.getNr_cnpj());
-		newObj.setNr_fax(obj.getNr_fax());
-		newObj.setNr_numero(obj.getNr_numero());
-		newObj.setNr_telefone(obj.getNr_telefone());
-		
-	}
+
 	
 	public void delete(Integer id) {
 		find(id);

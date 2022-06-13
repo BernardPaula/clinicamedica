@@ -32,23 +32,8 @@ public class MedicosService {
 	
 	
 	public Medicos update(Medicos obj) {
-		Medicos newObj = find(obj.getCd_medico());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	public void updateData(Medicos newObj, Medicos obj) {
-		newObj.setCd_laudo(obj.getCd_laudo());
-		newObj.setDs_area(obj.getDs_area());
-		newObj.setDs_especialidades(obj.getDs_especialidades());
-		newObj.setDs_senha(obj.getDs_senha());
-		newObj.setFl_admin(obj.getFl_admin());
-		newObj.setNm_medico(obj.getNm_medico());
-		newObj.setNm_usuario(obj.getNm_usuario());
-		newObj.setNr_cpf(obj.getNr_cpf());
-		newObj.setNr_crm(obj.getNr_crm());
-		newObj.setNr_pessoas(obj.getNr_pessoas());
-		newObj.setNr_rg(obj.getNr_rg());
+		Medicos newObj = repo.save(obj);
+		return find(newObj.getCdMedico());
 	}
 	
 	public void delete(Integer id) {

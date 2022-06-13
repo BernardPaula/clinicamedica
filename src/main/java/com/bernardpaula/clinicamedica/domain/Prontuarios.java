@@ -23,40 +23,40 @@ public class Prontuarios implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_prontuario;
+	private Integer cdProntuario;
 	
-	@Column(unique=true)
-	private Integer cd_paciente;
+	@Column(name="cd_paciente", unique=true)
+	private Integer cdPaciente;
 	
-	@Column(unique=true)
-	private Integer cd_medicamento;
+	@Column(name="cd_medicamento", unique=true)
+	private Integer cdMedicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=20, message= "O tamanho deve ser entre 1 e 20 caracteres")
-	@Column(unique=true)
-	private String ds_posologia;
+	@Column(name="ds_posologia", unique=true)
+	private String dsPosologia;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_iniciomed;      // ver- DATETIME - é o que está no projeto
+	private Date dtIniciomed;      // ver- DATETIME - é o que está no projeto
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_finalmed;
+	private Date dFinalmed;
 	
-	@Column(unique=true)
-	private Integer cd_exame;
+	@Column(name="cd_exame", unique=true)
+	private Integer cdExame;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_exame;
+	private Date dtExame;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=40, message=  "O tamanho deve ser entre 1 e 40 caracteres")
-	@Column(unique=true)
-	private String ds_resultado;
+	@Column(name="ds_resultado", unique=true)
+	private String dsResultado;
 	
 	@NotEmpty(message= "Preechimento obrigatório")
 	@Length(min=1, max=40, message= "O tamanho deve ser entre 1 e 40 caracteres")
-	@Column(unique=true)
-	private String ds_observacao;
+	@Column(name="ds_observacao", unique=true)
+	private String dsObservacao;
 	
 	
 	public Prontuarios() {
@@ -64,126 +64,128 @@ public class Prontuarios implements Serializable{
 	}
 
 
-	public Prontuarios(Integer cd_prontuario, Integer cd_paciente, Integer cd_medicamento, String ds_posologia,
-			Date dt_iniciomed, Date dt_finalmed, Integer cd_exame, Date dt_exame, String ds_resultado,
-			String ds_observacao) {
+	public Prontuarios(Integer cdProntuario, Integer cdPaciente, Integer cdMedicamento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 20, message = "O tamanho deve ser entre 1 e 20 caracteres") String dsPosologia,
+			Date dtIniciomed, Date dFinalmed, Integer cdExame, Date dtExame,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String dsResultado,
+			@NotEmpty(message = "Preechimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String dsObservacao) {
 		super();
-		this.cd_prontuario = cd_prontuario;
-		this.cd_paciente = cd_paciente;
-		this.cd_medicamento = cd_medicamento;
-		this.ds_posologia = ds_posologia;
-		this.dt_iniciomed = dt_iniciomed;
-		this.dt_finalmed = dt_finalmed;
-		this.cd_exame = cd_exame;
-		this.dt_exame = dt_exame;
-		this.ds_resultado = ds_resultado;
-		this.ds_observacao = ds_observacao;
+		this.cdProntuario = cdProntuario;
+		this.cdPaciente = cdPaciente;
+		this.cdMedicamento = cdMedicamento;
+		this.dsPosologia = dsPosologia;
+		this.dtIniciomed = dtIniciomed;
+		this.dFinalmed = dFinalmed;
+		this.cdExame = cdExame;
+		this.dtExame = dtExame;
+		this.dsResultado = dsResultado;
+		this.dsObservacao = dsObservacao;
 	}
 
 
-	public Integer getCd_prontuario() {
-		return cd_prontuario;
+	public Integer getCdProntuario() {
+		return cdProntuario;
 	}
 
 
-	public void setCd_prontuario(Integer cd_prontuario) {
-		this.cd_prontuario = cd_prontuario;
+	public void setCdProntuario(Integer cdProntuario) {
+		this.cdProntuario = cdProntuario;
 	}
 
 
-	public Integer getCd_paciente() {
-		return cd_paciente;
+	public Integer getCdPaciente() {
+		return cdPaciente;
 	}
 
 
-	public void setCd_paciente(Integer cd_paciente) {
-		this.cd_paciente = cd_paciente;
+	public void setCdPaciente(Integer cdPaciente) {
+		this.cdPaciente = cdPaciente;
 	}
 
 
-	public Integer getCd_medicamento() {
-		return cd_medicamento;
+	public Integer getCdMedicamento() {
+		return cdMedicamento;
 	}
 
 
-	public void setCd_medicamento(Integer cd_medicamento) {
-		this.cd_medicamento = cd_medicamento;
+	public void setCdMedicamento(Integer cdMedicamento) {
+		this.cdMedicamento = cdMedicamento;
 	}
 
 
-	public String getDs_posologia() {
-		return ds_posologia;
+	public String getDsPosologia() {
+		return dsPosologia;
 	}
 
 
-	public void setDs_posologia(String ds_posologia) {
-		this.ds_posologia = ds_posologia;
+	public void setDsPosologia(String dsPosologia) {
+		this.dsPosologia = dsPosologia;
 	}
 
 
-	public Date getDt_iniciomed() {
-		return dt_iniciomed;
+	public Date getDtIniciomed() {
+		return dtIniciomed;
 	}
 
 
-	public void setDt_iniciomed(Date dt_iniciomed) {
-		this.dt_iniciomed = dt_iniciomed;
+	public void setDtIniciomed(Date dtIniciomed) {
+		this.dtIniciomed = dtIniciomed;
 	}
 
 
-	public Date getDt_finalmed() {
-		return dt_finalmed;
+	public Date getdFinalmed() {
+		return dFinalmed;
 	}
 
 
-	public void setDt_finalmed(Date dt_finalmed) {
-		this.dt_finalmed = dt_finalmed;
+	public void setdFinalmed(Date dFinalmed) {
+		this.dFinalmed = dFinalmed;
 	}
 
 
-	public Integer getCd_exame() {
-		return cd_exame;
+	public Integer getCdExame() {
+		return cdExame;
 	}
 
 
-	public void setCd_exame(Integer cd_exame) {
-		this.cd_exame = cd_exame;
+	public void setCdExame(Integer cdExame) {
+		this.cdExame = cdExame;
 	}
 
 
-	public Date getDt_exame() {
-		return dt_exame;
+	public Date getDtExame() {
+		return dtExame;
 	}
 
 
-	public void setDt_exame(Date dt_exame) {
-		this.dt_exame = dt_exame;
+	public void setDtExame(Date dtExame) {
+		this.dtExame = dtExame;
 	}
 
 
-	public String getDs_resultado() {
-		return ds_resultado;
+	public String getDsResultado() {
+		return dsResultado;
 	}
 
 
-	public void setDs_resultado(String ds_resultado) {
-		this.ds_resultado = ds_resultado;
+	public void setDsResultado(String dsResultado) {
+		this.dsResultado = dsResultado;
 	}
 
 
-	public String getDs_observacao() {
-		return ds_observacao;
+	public String getDsObservacao() {
+		return dsObservacao;
 	}
 
 
-	public void setDs_observacao(String ds_observacao) {
-		this.ds_observacao = ds_observacao;
+	public void setDsObservacao(String dsObservacao) {
+		this.dsObservacao = dsObservacao;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_exame);
+		return Objects.hash(cdProntuario);
 	}
 
 
@@ -196,9 +198,10 @@ public class Prontuarios implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Prontuarios other = (Prontuarios) obj;
-		return Objects.equals(cd_exame, other.cd_exame);
+		return Objects.equals(cdProntuario, other.cdProntuario);
 	}
-	
+
+
 	
 	
 }

@@ -20,37 +20,37 @@ public class Medicamentos implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_medicamento;
+	private Integer cdMedicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message="O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String nm_medicamento;
+	@Column(name="nm_medicamento", unique=true)
+	private String nmMedicamento;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=30, message= "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String ds_substancia;
+	@Column(name="ds_substancia", unique=true)
+	private String dsSubstancia;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_posologia;
+	@Column(name="ds_posologia", unique=true)
+	private String dsPosologia;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_laboratorio;
+	@Column(name="ds_laboratorio", unique=true)
+	private String dsLaboratorio;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_contraind;
+	@Column(name="ds_contraind", unique=true)
+	private String dsContraind;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_generico;
+	@Column(name="ds_generico", unique=true)
+	private String dsGenerico;
 	
 	
 	public Medicamentos() {
@@ -58,92 +58,97 @@ public class Medicamentos implements Serializable {
 	}
 
 
-	public Medicamentos(Integer cd_medicamento, String nm_medicamento, String ds_substancia, String ds_posologia,
-			String ds_laboratorio, String ds_contraind, String ds_generico) {
+	public Medicamentos(Integer cdMedicamento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String nmMedicamento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsSubstancia,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsPosologia,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsLaboratorio,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsContraind,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsGenerico) {
 		super();
-		this.cd_medicamento = cd_medicamento;
-		this.nm_medicamento = nm_medicamento;
-		this.ds_substancia = ds_substancia;
-		this.ds_posologia = ds_posologia;
-		this.ds_laboratorio = ds_laboratorio;
-		this.ds_contraind = ds_contraind;
-		this.ds_generico = ds_generico;
+		this.cdMedicamento = cdMedicamento;
+		this.nmMedicamento = nmMedicamento;
+		this.dsSubstancia = dsSubstancia;
+		this.dsPosologia = dsPosologia;
+		this.dsLaboratorio = dsLaboratorio;
+		this.dsContraind = dsContraind;
+		this.dsGenerico = dsGenerico;
 	}
 
 
-	public Integer getCd_medicamento() {
-		return cd_medicamento;
+	public Integer getCdMedicamento() {
+		return cdMedicamento;
 	}
 
 
-	public void setCd_medicamento(Integer cd_medicamento) {
-		this.cd_medicamento = cd_medicamento;
+	public void setCdMedicamento(Integer cdMedicamento) {
+		this.cdMedicamento = cdMedicamento;
 	}
 
 
-	public String getNm_medicamento() {
-		return nm_medicamento;
+	public String getNmMedicamento() {
+		return nmMedicamento;
 	}
 
 
-	public void setNm_medicamento(String nm_medicamento) {
-		this.nm_medicamento = nm_medicamento;
+	public void setNmMedicamento(String nmMedicamento) {
+		this.nmMedicamento = nmMedicamento;
 	}
 
 
-	public String getDs_substancia() {
-		return ds_substancia;
+	public String getDsSubstancia() {
+		return dsSubstancia;
 	}
 
 
-	public void setDs_substancia(String ds_substancia) {
-		this.ds_substancia = ds_substancia;
+	public void setDsSubstancia(String dsSubstancia) {
+		this.dsSubstancia = dsSubstancia;
 	}
 
 
-	public String getDs_posologia() {
-		return ds_posologia;
+	public String getDsPosologia() {
+		return dsPosologia;
 	}
 
 
-	public void setDs_posologia(String ds_posologia) {
-		this.ds_posologia = ds_posologia;
+	public void setDsPosologia(String dsPosologia) {
+		this.dsPosologia = dsPosologia;
 	}
 
 
-	public String getDs_laboratorio() {
-		return ds_laboratorio;
+	public String getDsLaboratorio() {
+		return dsLaboratorio;
 	}
 
 
-	public void setDs_laboratorio(String ds_laboratorio) {
-		this.ds_laboratorio = ds_laboratorio;
+	public void setDsLaboratorio(String dsLaboratorio) {
+		this.dsLaboratorio = dsLaboratorio;
 	}
 
 
-	public String getDs_contraind() {
-		return ds_contraind;
+	public String getDsContraind() {
+		return dsContraind;
 	}
 
 
-	public void setDs_contraind(String ds_contraind) {
-		this.ds_contraind = ds_contraind;
+	public void setDsContraind(String dsContraind) {
+		this.dsContraind = dsContraind;
 	}
 
 
-	public String getDs_generico() {
-		return ds_generico;
+	public String getDsGenerico() {
+		return dsGenerico;
 	}
 
 
-	public void setDs_generico(String ds_generico) {
-		this.ds_generico = ds_generico;
+	public void setDsGenerico(String dsGenerico) {
+		this.dsGenerico = dsGenerico;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_medicamento);
+		return Objects.hash(cdMedicamento);
 	}
 
 
@@ -156,8 +161,9 @@ public class Medicamentos implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Medicamentos other = (Medicamentos) obj;
-		return Objects.equals(cd_medicamento, other.cd_medicamento);
+		return Objects.equals(cdMedicamento, other.cdMedicamento);
 	}
-	
+
+
 	
 }

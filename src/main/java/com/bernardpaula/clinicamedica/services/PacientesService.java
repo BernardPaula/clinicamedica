@@ -32,29 +32,8 @@ public class PacientesService {
 	
 	
 	public Pacientes update(Pacientes obj) {
-		Pacientes newObj = find(obj.getCd_paciente());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
-	
-	public void updateData(Pacientes newObj, Pacientes obj) {
-		newObj.setCd_convenio(obj.getCd_convenio());
-		newObj.setCd_laudo(obj.getCd_laudo());
-		newObj.setCd_prontuario(obj.getCd_prontuario());
-		newObj.setDe_email(obj.getDe_email());
-		newObj.setDs_endereco(obj.getDs_endereco());
-		newObj.setDs_senhaweb(obj.getDs_senhaweb());
-		newObj.setNm_mae(obj.getNm_mae());
-		newObj.setNm_pai(obj.getNm_pai());
-		newObj.setNm_paciente(obj.getNm_paciente());
-		newObj.setNr_acessos(obj.getNr_acessos());
-		newObj.setNr_carteira(obj.getNr_carteira());
-		newObj.setNr_cpf(obj.getNr_cpf());
-		newObj.setNr_rg(obj.getNr_rg());
-		newObj.setNr_telefone_cel(obj.getNr_telefone_cel());
-		newObj.setNr_telefone_com(obj.getNr_telefone_com());
-		newObj.setNr_telefone_res(obj.getNr_telefone_res());
-		
+		Pacientes newObj = repo.save(obj);		
+		return find(newObj.getCdPaciente());
 	}
 	
 	public void delete(Integer id) {

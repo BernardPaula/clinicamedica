@@ -36,17 +36,17 @@ public class LaudosResource {
 	@ApiOperation(value = "Insere Laudos")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Laudos obj){
-		obj.setCd_laudo(null);
+		obj.setCdLaudo(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_laudo()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdLaudo()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza Laudos")
 	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Laudos> update(@RequestBody Laudos obj, @PathVariable Integer id){
-		obj.setCd_laudo(id);
+		obj.setCdLaudo(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class LaudosResource {
 	public ResponseEntity<Page<Laudos>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "ds_laudo")String OrderBy,
+			@RequestParam(value = "orderBy", defaultValue = "dsLaudo")String OrderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<Laudos> list = service.findPage(page, linesPerPage, OrderBy, direction);
 		return ResponseEntity.ok().body(list);

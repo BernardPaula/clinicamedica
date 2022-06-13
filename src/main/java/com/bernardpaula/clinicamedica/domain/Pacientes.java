@@ -20,67 +20,67 @@ public class Pacientes implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_paciente;
+	private Integer cdPaciente;
 	
-	@Column(unique=true)
-	private Integer cd_convenio;
+	@Column(name="cd_convenio", unique=true)
+	private Integer cdConvenio;
 	
-	@Column(unique=true)
-	private Integer cd_laudo;
+	@Column(name="cd_laudo", unique=true)
+	private Integer cdLaudo;
 	
-	@Column(unique=true)
-	private Integer cd_prontuario;
+	@Column(name="cd_prontuario", unique=true)
+	private Integer cdProntuario;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String nm_paciente;
+	@Column(name="nm_paciente", unique=true)
+	private String nmPaciente;
 	
-	@Column(unique=true)
-	private Integer nr_cpf;
+	@Column(name="nr_cpf", unique=true)
+	private Integer nrCpf;
 	
-	@Column(unique=true)
-	private Integer nr_rg;
+	@Column(name="nr_rg", unique=true)
+	private Integer nrRg;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=50, message= "O tamano deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String nm_pai;
+	@Column(name="nm_pai", unique=true)
+	private String nmPai;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String nm_mae;
+	@Column(name="nm_mae", unique=true)
+	private String nmMae;
 	
-	@Column(unique=true)
-	private Integer nr_carteira;
-	
-	@NotEmpty(message= "Preenchimento obrigatório")
-	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String ds_endereco;
-	
-	@Column(unique=true)
-	private Integer nr_telefone_res;
-	
-	@Column(unique=true)
-	private Integer nr_telefone_cel;
-	
-	@Column(unique=true)
-	private Integer nr_telefone_com;
+	@Column(name="nr_carteira", unique=true)
+	private Integer nrCarteira;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String de_email;
+	@Column(name="ds_endereco", unique=true)
+	private String dsEndereco;
+	
+	@Column(name="nr_telefone_res", unique=true)
+	private Integer nrTelefone_res;
+	
+	@Column(name="nr_telefone_cel", unique=true)
+	private Integer nrTelefone_cel;
+	
+	@Column(name="nr_telefone_com", unique=true)
+	private Integer nrTelefone_com;
+	
+	@NotEmpty(message= "Preenchimento obrigatório")
+	@Length(min=1, max=50, message= "O tamanho deve ser entre 1 e 50 caracteres")
+	@Column(name="de_email", unique=true)
+	private String deEmail;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=10, message= "O tamanho deve ser entre 1 e 10 caracteres")
-	@Column(unique=true)
-	private String ds_senhaweb;
+	@Column(name="ds_senhaweb", unique=true)
+	private String dsSenhaweb;
 	
-	@Column(unique=true)
-	private Integer nr_acessos;
+	@Column(name="nr_acessos", unique=true)
+	private Integer nrAcessos;
 	
 	
 	public Pacientes(){
@@ -88,204 +88,211 @@ public class Pacientes implements Serializable{
 	}
 
 
-	public Pacientes(Integer cd_paciente, Integer cd_convenio, Integer cd_laudo, Integer cd_prontuario,
-			String nm_paciente, Integer nr_cpf, Integer nr_rg, String nm_pai, String nm_mae, Integer nr_carteira,
-			String ds_endereco, Integer nr_telefone_res, Integer nr_telefone_cel, Integer nr_telefone_com,
-			String de_email, String ds_senhaweb, Integer nr_acessos) {
+	public Pacientes(Integer cdPaciente, Integer cdConvenio, Integer cdLaudo, Integer cdProntuario,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String nmPaciente,
+			Integer nrCpf, Integer nrRg,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamano deve ser entre 1 e 50 caracteres") String nmPai,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String nmMae,
+			Integer nrCarteira,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String dsEndereco,
+			Integer nrTelefone_res, Integer nrTelefone_cel, Integer nrTelefone_com,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String deEmail,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 10, message = "O tamanho deve ser entre 1 e 10 caracteres") String dsSenhaweb,
+			Integer nrAcessos) {
 		super();
-		this.cd_paciente = cd_paciente;
-		this.cd_convenio = cd_convenio;
-		this.cd_laudo = cd_laudo;
-		this.cd_prontuario = cd_prontuario;
-		this.nm_paciente = nm_paciente;
-		this.nr_cpf = nr_cpf;
-		this.nr_rg = nr_rg;
-		this.nm_pai = nm_pai;
-		this.nm_mae = nm_mae;
-		this.nr_carteira = nr_carteira;
-		this.ds_endereco = ds_endereco;
-		this.nr_telefone_res = nr_telefone_res;
-		this.nr_telefone_cel = nr_telefone_cel;
-		this.nr_telefone_com = nr_telefone_com;
-		this.de_email = de_email;
-		this.ds_senhaweb = ds_senhaweb;
-		this.nr_acessos = nr_acessos;
+		this.cdPaciente = cdPaciente;
+		this.cdConvenio = cdConvenio;
+		this.cdLaudo = cdLaudo;
+		this.cdProntuario = cdProntuario;
+		this.nmPaciente = nmPaciente;
+		this.nrCpf = nrCpf;
+		this.nrRg = nrRg;
+		this.nmPai = nmPai;
+		this.nmMae = nmMae;
+		this.nrCarteira = nrCarteira;
+		this.dsEndereco = dsEndereco;
+		this.nrTelefone_res = nrTelefone_res;
+		this.nrTelefone_cel = nrTelefone_cel;
+		this.nrTelefone_com = nrTelefone_com;
+		this.deEmail = deEmail;
+		this.dsSenhaweb = dsSenhaweb;
+		this.nrAcessos = nrAcessos;
 	}
 
 
-	public Integer getCd_paciente() {
-		return cd_paciente;
+	public Integer getCdPaciente() {
+		return cdPaciente;
 	}
 
 
-	public void setCd_paciente(Integer cd_paciente) {
-		this.cd_paciente = cd_paciente;
+	public void setCdPaciente(Integer cdPaciente) {
+		this.cdPaciente = cdPaciente;
 	}
 
 
-	public Integer getCd_convenio() {
-		return cd_convenio;
+	public Integer getCdConvenio() {
+		return cdConvenio;
 	}
 
 
-	public void setCd_convenio(Integer cd_convenio) {
-		this.cd_convenio = cd_convenio;
+	public void setCdConvenio(Integer cdConvenio) {
+		this.cdConvenio = cdConvenio;
 	}
 
 
-	public Integer getCd_laudo() {
-		return cd_laudo;
+	public Integer getCdLaudo() {
+		return cdLaudo;
 	}
 
 
-	public void setCd_laudo(Integer cd_laudo) {
-		this.cd_laudo = cd_laudo;
+	public void setCdLaudo(Integer cdLaudo) {
+		this.cdLaudo = cdLaudo;
 	}
 
 
-	public Integer getCd_prontuario() {
-		return cd_prontuario;
+	public Integer getCdProntuario() {
+		return cdProntuario;
 	}
 
 
-	public void setCd_prontuario(Integer cd_prontuario) {
-		this.cd_prontuario = cd_prontuario;
+	public void setCdProntuario(Integer cdProntuario) {
+		this.cdProntuario = cdProntuario;
 	}
 
 
-	public String getNm_paciente() {
-		return nm_paciente;
+	public String getNmPaciente() {
+		return nmPaciente;
 	}
 
 
-	public void setNm_paciente(String nm_paciente) {
-		this.nm_paciente = nm_paciente;
+	public void setNmPaciente(String nmPaciente) {
+		this.nmPaciente = nmPaciente;
 	}
 
 
-	public Integer getNr_cpf() {
-		return nr_cpf;
+	public Integer getNrCpf() {
+		return nrCpf;
 	}
 
 
-	public void setNr_cpf(Integer nr_cpf) {
-		this.nr_cpf = nr_cpf;
+	public void setNrCpf(Integer nrCpf) {
+		this.nrCpf = nrCpf;
 	}
 
 
-	public Integer getNr_rg() {
-		return nr_rg;
+	public Integer getNrRg() {
+		return nrRg;
 	}
 
 
-	public void setNr_rg(Integer nr_rg) {
-		this.nr_rg = nr_rg;
+	public void setNrRg(Integer nrRg) {
+		this.nrRg = nrRg;
 	}
 
 
-	public String getNm_pai() {
-		return nm_pai;
+	public String getNmPai() {
+		return nmPai;
 	}
 
 
-	public void setNm_pai(String nm_pai) {
-		this.nm_pai = nm_pai;
+	public void setNmPai(String nmPai) {
+		this.nmPai = nmPai;
 	}
 
 
-	public String getNm_mae() {
-		return nm_mae;
+	public String getNmMae() {
+		return nmMae;
 	}
 
 
-	public void setNm_mae(String nm_mae) {
-		this.nm_mae = nm_mae;
+	public void setNmMae(String nmMae) {
+		this.nmMae = nmMae;
 	}
 
 
-	public Integer getNr_carteira() {
-		return nr_carteira;
+	public Integer getNrCarteira() {
+		return nrCarteira;
 	}
 
 
-	public void setNr_carteira(Integer nr_carteira) {
-		this.nr_carteira = nr_carteira;
+	public void setNrCarteira(Integer nrCarteira) {
+		this.nrCarteira = nrCarteira;
 	}
 
 
-	public String getDs_endereco() {
-		return ds_endereco;
+	public String getDsEndereco() {
+		return dsEndereco;
 	}
 
 
-	public void setDs_endereco(String ds_endereco) {
-		this.ds_endereco = ds_endereco;
+	public void setDsEndereco(String dsEndereco) {
+		this.dsEndereco = dsEndereco;
 	}
 
 
-	public Integer getNr_telefone_res() {
-		return nr_telefone_res;
+	public Integer getNrTelefone_res() {
+		return nrTelefone_res;
 	}
 
 
-	public void setNr_telefone_res(Integer nr_telefone_res) {
-		this.nr_telefone_res = nr_telefone_res;
+	public void setNrTelefone_res(Integer nrTelefone_res) {
+		this.nrTelefone_res = nrTelefone_res;
 	}
 
 
-	public Integer getNr_telefone_cel() {
-		return nr_telefone_cel;
+	public Integer getNrTelefone_cel() {
+		return nrTelefone_cel;
 	}
 
 
-	public void setNr_telefone_cel(Integer nr_telefone_cel) {
-		this.nr_telefone_cel = nr_telefone_cel;
+	public void setNrTelefone_cel(Integer nrTelefone_cel) {
+		this.nrTelefone_cel = nrTelefone_cel;
 	}
 
 
-	public Integer getNr_telefone_com() {
-		return nr_telefone_com;
+	public Integer getNrTelefone_com() {
+		return nrTelefone_com;
 	}
 
 
-	public void setNr_telefone_com(Integer nr_telefone_com) {
-		this.nr_telefone_com = nr_telefone_com;
+	public void setNrTelefone_com(Integer nrTelefone_com) {
+		this.nrTelefone_com = nrTelefone_com;
 	}
 
 
-	public String getDe_email() {
-		return de_email;
+	public String getDeEmail() {
+		return deEmail;
 	}
 
 
-	public void setDe_email(String de_email) {
-		this.de_email = de_email;
+	public void setDeEmail(String deEmail) {
+		this.deEmail = deEmail;
 	}
 
 
-	public String getDs_senhaweb() {
-		return ds_senhaweb;
+	public String getDsSenhaweb() {
+		return dsSenhaweb;
 	}
 
 
-	public void setDs_senhaweb(String ds_senhaweb) {
-		this.ds_senhaweb = ds_senhaweb;
+	public void setDsSenhaweb(String dsSenhaweb) {
+		this.dsSenhaweb = dsSenhaweb;
 	}
 
 
-	public Integer getNr_acessos() {
-		return nr_acessos;
+	public Integer getNrAcessos() {
+		return nrAcessos;
 	}
 
 
-	public void setNr_acessos(Integer nr_acessos) {
-		this.nr_acessos = nr_acessos;
+	public void setNrAcessos(Integer nrAcessos) {
+		this.nrAcessos = nrAcessos;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_convenio);
+		return Objects.hash(cdPaciente);
 	}
 
 
@@ -298,10 +305,8 @@ public class Pacientes implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Pacientes other = (Pacientes) obj;
-		return Objects.equals(cd_convenio, other.cd_convenio);
+		return Objects.equals(cdPaciente, other.cdPaciente);
 	}
-	
-	
 	
 	
 }

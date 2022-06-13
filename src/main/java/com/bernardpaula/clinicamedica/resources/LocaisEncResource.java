@@ -36,17 +36,17 @@ public class LocaisEncResource {
 	@ApiOperation(value = "Insere LocaisEnc")
 	@RequestMapping(value = "/inserir", method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody LocaisEnc obj){
-		obj.setCod_local_enc(null);
+		obj.setCodLocalEnc(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCod_local_enc()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCodLocalEnc()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza LocaisEnc")
 	@RequestMapping(value = "/atualizar/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<LocaisEnc> update(@RequestBody LocaisEnc obj, @PathVariable Integer id){
-		obj.setCod_local_enc(id);
+		obj.setCodLocalEnc(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class LocaisEncResource {
 	public ResponseEntity<Page<LocaisEnc>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "nm_clinica")String OrderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmClinica")String OrderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<LocaisEnc> list = service.findPage(page, linesPerPage, OrderBy, direction);
 		return ResponseEntity.ok().body(list);

@@ -21,59 +21,61 @@ public class Clinicas implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_clinica;
+	private Integer cdClinica;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres")
-	@Column(unique=true)
-	private String nm_clinica;
+	@Column(name="nm_clinica", unique=true)
+	private String nmClinica;
 	
-	@Column(unique=true)
-	private Integer nr_cnpj;
+	@Column(name="nr_cnpj", unique=true)
+	private Integer nrCnpj;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres")
-	@Column(unique=true)
-	private String ds_especialidades;
+	@Column(name="ds_especialidades", unique=true)
+	private String dsEspecialidades;
 	
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
-	private String ds_endereco;
+	@Column(name="ds_endereco", unique=true)
+	private String dsEndereco;
 	
-	@Column(unique=true)
-	private Integer nr_numero;
+	@Column(name="nr_numero", unique=true)
+	private Integer nrNumero;
 	
 	@NotEmpty(message = "Preenchimento obrigatóri")
 	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
-	@Column(unique=true)
-	private String ds_complemento;
+	@Column(name="ds_complemento", unique=true)
+	private String dsComplemento;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
-	@Column(unique=true)
-	private String ds_bairro;
+	@Column(name="ds_bairro", unique=true)
+	private String dsBairro;
 	
-	@Column(unique=true)
-	private Integer nr_cep;
+	@Column(name="nr_cep", unique=true)
+	private Integer nrCep;
 	
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(min=1, max=20, message = "O tamanho deve ser entre 1 e 20 caracteres")
-	private String ds_cidade;
+	@Column(name= "ds_cidade", unique=true)
+	private String dsCidade;
 	
-	@Column(unique=true)
-	private char ds_uf;
+	@Column(name="ds_uf", unique=true)
+	private char dsUf;
 	
 	@Email
-	@Column(unique=true)
+	@Column(name="ds_email", unique=true)
 	@Length(min=1, max=30, message = "O tamanho deve ser entre 1 e 30 caracteres")
-	private String ds_email;
+	private String dsEmail;
 	
-	@Column(unique=true)
-	private Integer nr_telefone;
+	@Column(name="nrTelefone", unique=true)
+	private Integer nrTelefone;
 	
-	@Column(unique=true)
-	private Integer nr_fax;
+	@Column(name="nr_fax", unique=true)
+	private Integer nrFax;
 	
 	
 	public Clinicas() {
@@ -81,170 +83,180 @@ public class Clinicas implements Serializable{
 	}
 
 
-	public Clinicas(Integer cd_clinica, String nm_clinica, Integer nr_cnpj, String ds_especialidades,
-			String ds_endereco, Integer nr_numero, String ds_complemento, String ds_bairro, Integer nr_cep,
-			String ds_cidade, char ds_uf, String ds_email, Integer nr_telefone, Integer nr_fax) {
+	public Clinicas(Integer cdClinica,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 40, message = "O tamanho deve ser entre 1 e 40 caracteres") String nmClinica,
+			Integer nrCnpj,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 50, message = "O tamanho deve ser entre 1 e 50 caracteres") String dsEspecialidades,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsEndereco,
+			Integer nrNumero,
+			@NotEmpty(message = "Preenchimento obrigatóri") @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsComplemento,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 20, message = "O tamanho deve ser entre 1 e 20 caracteres") String dsBairro,
+			Integer nrCep,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 20, message = "O tamanho deve ser entre 1 e 20 caracteres") String dsCidade,
+			char dsUf,
+			@Email @Length(min = 1, max = 30, message = "O tamanho deve ser entre 1 e 30 caracteres") String dsEmail,
+			Integer nrTelefone, Integer nrFax) {
 		super();
-		this.cd_clinica = cd_clinica;
-		this.nm_clinica = nm_clinica;
-		this.nr_cnpj = nr_cnpj;
-		this.ds_especialidades = ds_especialidades;
-		this.ds_endereco = ds_endereco;
-		this.nr_numero = nr_numero;
-		this.ds_complemento = ds_complemento;
-		this.ds_bairro = ds_bairro;
-		this.nr_cep = nr_cep;
-		this.ds_cidade = ds_cidade;
-		this.ds_uf = ds_uf;
-		this.ds_email = ds_email;
-		this.nr_telefone = nr_telefone;
-		this.nr_fax = nr_fax;
+		this.cdClinica = cdClinica;
+		this.nmClinica = nmClinica;
+		this.nrCnpj = nrCnpj;
+		this.dsEspecialidades = dsEspecialidades;
+		this.dsEndereco = dsEndereco;
+		this.nrNumero = nrNumero;
+		this.dsComplemento = dsComplemento;
+		this.dsBairro = dsBairro;
+		this.nrCep = nrCep;
+		this.dsCidade = dsCidade;
+		this.dsUf = dsUf;
+		this.dsEmail = dsEmail;
+		this.nrTelefone = nrTelefone;
+		this.nrFax = nrFax;
 	}
 
 
-	public Integer getCd_clinica() {
-		return cd_clinica;
+	public Integer getCdClinica() {
+		return cdClinica;
 	}
 
 
-	public void setCd_clinica(Integer cd_clinica) {
-		this.cd_clinica = cd_clinica;
+	public void setCdClinica(Integer cdClinica) {
+		this.cdClinica = cdClinica;
 	}
 
 
-	public String getNm_clinica() {
-		return nm_clinica;
+	public String getNmClinica() {
+		return nmClinica;
 	}
 
 
-	public void setNm_clinica(String nm_clinica) {
-		this.nm_clinica = nm_clinica;
+	public void setNmClinica(String nmClinica) {
+		this.nmClinica = nmClinica;
 	}
 
 
-	public Integer getNr_cnpj() {
-		return nr_cnpj;
+	public Integer getNrCnpj() {
+		return nrCnpj;
 	}
 
 
-	public void setNr_cnpj(Integer nr_cnpj) {
-		this.nr_cnpj = nr_cnpj;
+	public void setNrCnpj(Integer nrCnpj) {
+		this.nrCnpj = nrCnpj;
 	}
 
 
-	public String getDs_especialidades() {
-		return ds_especialidades;
+	public String getDsEspecialidades() {
+		return dsEspecialidades;
 	}
 
 
-	public void setDs_especialidades(String ds_especialidades) {
-		this.ds_especialidades = ds_especialidades;
+	public void setDsEspecialidades(String dsEspecialidades) {
+		this.dsEspecialidades = dsEspecialidades;
 	}
 
 
-	public String getDs_endereco() {
-		return ds_endereco;
+	public String getDsEndereco() {
+		return dsEndereco;
 	}
 
 
-	public void setDs_endereco(String ds_endereco) {
-		this.ds_endereco = ds_endereco;
+	public void setDsEndereco(String dsEndereco) {
+		this.dsEndereco = dsEndereco;
 	}
 
 
-	public Integer getNr_numero() {
-		return nr_numero;
+	public Integer getNrNumero() {
+		return nrNumero;
 	}
 
 
-	public void setNr_numero(Integer nr_numero) {
-		this.nr_numero = nr_numero;
+	public void setNrNumero(Integer nrNumero) {
+		this.nrNumero = nrNumero;
 	}
 
 
-	public String getDs_complemento() {
-		return ds_complemento;
+	public String getDsComplemento() {
+		return dsComplemento;
 	}
 
 
-	public void setDs_complemento(String ds_complemento) {
-		this.ds_complemento = ds_complemento;
+	public void setDsComplemento(String dsComplemento) {
+		this.dsComplemento = dsComplemento;
 	}
 
 
-	public String getDs_bairro() {
-		return ds_bairro;
+	public String getDsBairro() {
+		return dsBairro;
 	}
 
 
-	public void setDs_bairro(String ds_bairro) {
-		this.ds_bairro = ds_bairro;
+	public void setDsBairro(String dsBairro) {
+		this.dsBairro = dsBairro;
 	}
 
 
-	public Integer getNr_cep() {
-		return nr_cep;
+	public Integer getNrCep() {
+		return nrCep;
 	}
 
 
-	public void setNr_cep(Integer nr_cep) {
-		this.nr_cep = nr_cep;
+	public void setNrCep(Integer nrCep) {
+		this.nrCep = nrCep;
 	}
 
 
-	public String getDs_cidade() {
-		return ds_cidade;
+	public String getDsCidade() {
+		return dsCidade;
 	}
 
 
-	public void setDs_cidade(String ds_cidade) {
-		this.ds_cidade = ds_cidade;
+	public void setDsCidade(String dsCidade) {
+		this.dsCidade = dsCidade;
 	}
 
 
-	public char getDs_uf() {
-		return ds_uf;
+	public char getDsUf() {
+		return dsUf;
 	}
 
 
-	public void setDs_uf(char ds_uf) {
-		this.ds_uf = ds_uf;
+	public void setDsUf(char dsUf) {
+		this.dsUf = dsUf;
 	}
 
 
-	public String getDs_email() {
-		return ds_email;
+	public String getDsEmail() {
+		return dsEmail;
 	}
 
 
-	public void setDs_email(String ds_email) {
-		this.ds_email = ds_email;
+	public void setDsEmail(String dsEmail) {
+		this.dsEmail = dsEmail;
 	}
 
 
-	public Integer getNr_telefone() {
-		return nr_telefone;
+	public Integer getNrTelefone() {
+		return nrTelefone;
 	}
 
 
-	public void setNr_telefone(Integer nr_telefone) {
-		this.nr_telefone = nr_telefone;
+	public void setNrTelefone(Integer nrTelefone) {
+		this.nrTelefone = nrTelefone;
 	}
 
 
-	public Integer getNr_fax() {
-		return nr_fax;
+	public Integer getNrFax() {
+		return nrFax;
 	}
 
 
-	public void setNr_fax(Integer nr_fax) {
-		this.nr_fax = nr_fax;
+	public void setNrFax(Integer nrFax) {
+		this.nrFax = nrFax;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_clinica);
+		return Objects.hash(cdClinica);
 	}
 
 
@@ -257,9 +269,10 @@ public class Clinicas implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Clinicas other = (Clinicas) obj;
-		return Objects.equals(cd_clinica, other.cd_clinica);
+		return Objects.equals(cdClinica, other.cdClinica);
 	}
-	
+
+
 	
 	
 }

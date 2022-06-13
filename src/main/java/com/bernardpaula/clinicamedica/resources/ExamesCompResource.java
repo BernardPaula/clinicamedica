@@ -36,17 +36,17 @@ public class ExamesCompResource {
 	@ApiOperation(value = "Insere ExamesComp")
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody ExamesComp obj){
-		obj.setCd_exame_comp(null);
+		obj.setCdExameComp(null);
 		obj = service.insert(obj);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCd_exame_comp()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getCdExameComp()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@ApiOperation(value = "Atualiza ExamesComp")
 	@RequestMapping(value = "/atualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<ExamesComp> update (@RequestBody ExamesComp obj, @PathVariable Integer id){
-		obj.setCd_exame_comp(id);
+		obj.setCdExameComp(id);
 		obj = service.update(obj);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -70,7 +70,7 @@ public class ExamesCompResource {
 	public ResponseEntity<Page<ExamesComp>> findPage(
 			@RequestParam(value = "page", defaultValue = "0")Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24")Integer linesPerPage, 
-			@RequestParam(value = "orderBy", defaultValue = "nm_exame")String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nmExame")String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction){
 		Page<ExamesComp> list = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(list);

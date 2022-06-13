@@ -31,19 +31,10 @@ public class ConsultasService {
 	}
 
 	public Consultas update(Consultas obj) {
-		Consultas newObj = find(obj.getCd_consulta());
-		updateData(newObj, obj);
-		return repo.save(newObj);
-	}
+		Consultas newObj = repo.save(obj);
+		return find(newObj.getCdConsulta());
+		}
 	
-	private void updateData(Consultas newObj, Consultas obj) {
-		newObj.setCd_convenio(obj.getCd_convenio());
-		newObj.setCd_medico(obj.getCd_medico());
-		newObj.setCd_paciente(obj.getCd_paciente());
-		newObj.setDs_tipo(obj.getDs_tipo());
-		newObj.setDt_consulta(obj.getDt_consulta());
-		newObj.setNr_horairo(obj.getNr_horairo());
-	}
 	
 	public void delete(Integer id) {
 		find(id);

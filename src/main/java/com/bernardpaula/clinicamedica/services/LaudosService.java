@@ -32,18 +32,10 @@ public class LaudosService {
 	}
 	
 	public Laudos update(Laudos obj) {
-		Laudos newObj = find(obj.getCd_laudo());
-		updateData(newObj, obj);
-		return repo.save(newObj);
+		Laudos newObj = repo.save(obj);
+		return find(newObj.getCdLaudo());
 	}
 	
-	private void updateData(Laudos newObj, Laudos obj) {
-		newObj.setCd_medico(obj.getCd_medico());
-		newObj.setCd_paciente(obj.getCd_paciente());
-		newObj.setDs_laudo(obj.getDs_laudo());
-		newObj.setDt_laudo(obj.getDt_laudo());
-		newObj.setHr_laudo(obj.getHr_laudo());
-	}
 	
 	public void delete (Integer id) {
 		repo.deleteById(id);

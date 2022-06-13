@@ -23,15 +23,15 @@ public class LogAcesso implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_acesso;
+	private Integer cdAcesso;
 
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ter entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String nm_usuario;
+	@Column(name="nm_usuario", unique=true)
+	private String nmUsuario;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_acesso;   // esta como DATETIME
+	private Date dtAcesso;   // esta como DATETIME
 	
 	
 	public LogAcesso() {
@@ -39,47 +39,49 @@ public class LogAcesso implements Serializable{
 	}
 
 
-	public LogAcesso(Integer cd_acesso, String nm_usuario, Date dt_acesso) {
+	public LogAcesso(Integer cdAcesso,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ter entre 1 e 80 caracteres") String nmUsuario,
+			Date dtAcesso) {
 		super();
-		this.cd_acesso = cd_acesso;
-		this.nm_usuario = nm_usuario;
-		this.dt_acesso = dt_acesso;
+		this.cdAcesso = cdAcesso;
+		this.nmUsuario = nmUsuario;
+		this.dtAcesso = dtAcesso;
 	}
 
 
-	public Integer getCd_acesso() {
-		return cd_acesso;
+	public Integer getCdAcesso() {
+		return cdAcesso;
 	}
 
 
-	public void setCd_acesso(Integer cd_acesso) {
-		this.cd_acesso = cd_acesso;
+	public void setCdAcesso(Integer cdAcesso) {
+		this.cdAcesso = cdAcesso;
 	}
 
 
-	public String getNm_usuario() {
-		return nm_usuario;
+	public String getNmUsuario() {
+		return nmUsuario;
 	}
 
 
-	public void setNm_usuario(String nm_usuario) {
-		this.nm_usuario = nm_usuario;
+	public void setNmUsuario(String nmUsuario) {
+		this.nmUsuario = nmUsuario;
 	}
 
 
-	public Date getDt_acesso() {
-		return dt_acesso;
+	public Date getDtAcesso() {
+		return dtAcesso;
 	}
 
 
-	public void setDt_acesso(Date dt_acesso) {
-		this.dt_acesso = dt_acesso;
+	public void setDtAcesso(Date dtAcesso) {
+		this.dtAcesso = dtAcesso;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_acesso);
+		return Objects.hash(cdAcesso);
 	}
 
 
@@ -92,9 +94,8 @@ public class LogAcesso implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		LogAcesso other = (LogAcesso) obj;
-		return Objects.equals(cd_acesso, other.cd_acesso);
+		return Objects.equals(cdAcesso, other.cdAcesso);
 	}
-	
-	
+
 	
 }

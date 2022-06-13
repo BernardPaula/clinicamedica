@@ -23,24 +23,24 @@ public class Laudos implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cd_laudo;
+	private Integer cdLaudo;
 	
-	@Column(unique=true)
-	private Integer cd_paciente;
+	@Column(name="cd_paciente", unique=true)
+	private Integer cdPaciente;
 	
-	@Column(unique=true)
-	private Integer cd_medico;
+	@Column(name="cd_medico", unique=true)
+	private Integer cdMedico;
 	
 	@NotEmpty(message= "Preenchimento obrigatório")
 	@Length(min=1, max=80, message= "O tamanho deve ser entre 1 e 80 caracteres")
-	@Column(unique=true)
-	private String ds_laudo;
+	@Column(name="ds_laudo", unique=true)
+	private String dsLaudo;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private Date dt_laudo;
+	private Date dtLaudo;
 	
 	@JsonFormat(pattern = "yyyy/MM/dd")    // - ver - esta como TIME
-	private Date hr_laudo;
+	private Date hrLaudo;
 	
 	
 	public Laudos() {
@@ -48,81 +48,82 @@ public class Laudos implements Serializable{
 	}
 
 
-	public Laudos(Integer cd_laudo, Integer cd_paciente, Integer cd_medico, String ds_laudo, Date dt_laudo,
-			Date hr_laudo) {
+	public Laudos(Integer cdLaudo, Integer cdPaciente, Integer cdMedico,
+			@NotEmpty(message = "Preenchimento obrigatório") @Length(min = 1, max = 80, message = "O tamanho deve ser entre 1 e 80 caracteres") String dsLaudo,
+			Date dtLaudo, Date hrLaudo) {
 		super();
-		this.cd_laudo = cd_laudo;
-		this.cd_paciente = cd_paciente;
-		this.cd_medico = cd_medico;
-		this.ds_laudo = ds_laudo;
-		this.dt_laudo = dt_laudo;
-		this.hr_laudo = hr_laudo;
+		this.cdLaudo = cdLaudo;
+		this.cdPaciente = cdPaciente;
+		this.cdMedico = cdMedico;
+		this.dsLaudo = dsLaudo;
+		this.dtLaudo = dtLaudo;
+		this.hrLaudo = hrLaudo;
 	}
 
 
-	public Integer getCd_laudo() {
-		return cd_laudo;
+	public Integer getCdLaudo() {
+		return cdLaudo;
 	}
 
 
-	public void setCd_laudo(Integer cd_laudo) {
-		this.cd_laudo = cd_laudo;
+	public void setCdLaudo(Integer cdLaudo) {
+		this.cdLaudo = cdLaudo;
 	}
 
 
-	public Integer getCd_paciente() {
-		return cd_paciente;
+	public Integer getCdPaciente() {
+		return cdPaciente;
 	}
 
 
-	public void setCd_paciente(Integer cd_paciente) {
-		this.cd_paciente = cd_paciente;
+	public void setCdPaciente(Integer cdPaciente) {
+		this.cdPaciente = cdPaciente;
 	}
 
 
-	public Integer getCd_medico() {
-		return cd_medico;
+	public Integer getCdMedico() {
+		return cdMedico;
 	}
 
 
-	public void setCd_medico(Integer cd_medico) {
-		this.cd_medico = cd_medico;
+	public void setCdMedico(Integer cdMedico) {
+		this.cdMedico = cdMedico;
 	}
 
 
-	public String getDs_laudo() {
-		return ds_laudo;
+	public String getDsLaudo() {
+		return dsLaudo;
 	}
 
 
-	public void setDs_laudo(String ds_laudo) {
-		this.ds_laudo = ds_laudo;
+	public void setDsLaudo(String dsLaudo) {
+		this.dsLaudo = dsLaudo;
 	}
 
 
-	public Date getDt_laudo() {
-		return dt_laudo;
+	public Date getDtLaudo() {
+		return dtLaudo;
 	}
 
 
-	public void setDt_laudo(Date dt_laudo) {
-		this.dt_laudo = dt_laudo;
+	public void setDtLaudo(Date dtLaudo) {
+		this.dtLaudo = dtLaudo;
 	}
 
 
-	public Date getHr_laudo() {
-		return hr_laudo;
+	public Date getHrLaudo() {
+		return hrLaudo;
 	}
 
 
-	public void setHr_laudo(Date hr_laudo) {
-		this.hr_laudo = hr_laudo;
+	public void setHrLaudo(Date hrLaudo) {
+		this.hrLaudo = hrLaudo;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cd_laudo);
+		return Objects.hash(cdLaudo);
 	}
 
 
@@ -135,9 +136,10 @@ public class Laudos implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Laudos other = (Laudos) obj;
-		return Objects.equals(cd_laudo, other.cd_laudo);
+		return Objects.equals(cdLaudo, other.cdLaudo);
 	}
-	
+
+
 	
 	
 }
